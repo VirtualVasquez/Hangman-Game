@@ -1,5 +1,15 @@
 //Global Variable
 //===================================================
+// Used to record how many times a letter can be pressed
+var doubleWord = ['a','b','c',
+				  'd','e','f',
+				  'g','h','i',
+				  'j','k','l',
+				  'm','n','o',
+				  'p','q','r',
+				  's','t','u',
+				  'v','w','x',
+				  'y','z'];
 // Array of Words
 const name = ['flowey', 'toriel', 'sans', 'papyrus', 'undyne']
 //choose word randomly
@@ -9,8 +19,8 @@ var rightLetter =[];
 var wrongLetter = [];
 var underScore = [];
 
-//html manipulation
-var blankSpaces = document.getElementsbyId('spaces')
+//HTML manipulation
+var blanks = document.getElementById('spaces')
 
 // Main
 // ====================================================
@@ -41,8 +51,11 @@ document.addEventListener('keypress', (event) => {
 		// add to wrongLetter array
 			wrongLetter.push(keyWord);
 	}
-
 });
+
+generateUnderscore().join('');
+blanks[0].innerHTML = 'Working';
+
 //define images to be used
 //--load image upon page load
 //--match the image to the randomly selected word
