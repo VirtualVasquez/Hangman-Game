@@ -1,10 +1,20 @@
+//Global Variable
+//===================================================
 // Array of Words
-const name = ['FLOWEY', 'TORIEL', 'SANS', 'PAPYRUS', 'UNDYNE']
+const name = ['flowey', 'toriel', 'sans', 'papyrus', 'undyne']
 //choose word randomly
 var randNum = Math.floor(Math.random()*name.length);
 var chosenName = name[randNum];
-var underScore = []
-console.log(chosenName);
+var rightLetter =[];
+var wrongLetter = [];
+var underScore = [];
+
+//html manipulation
+var blankSpaces = document.getElementsbyId('spaces')
+
+// Main
+// ====================================================
+
 //create underscores based on length of word
 var generateUnderscore = () => {
 	for(var i = 0; i < chosenName.length; i++){
@@ -13,7 +23,26 @@ var generateUnderscore = () => {
 	return underScore;
 }
 
-console.log(generateUnderscore());
+// Get users guess
+document.addEventListener('keypress', (event) => {
+	var keyWord = String.fromCharCode(event.keyCode);
+//if users guess is right
+	if(chosenName.indexOf(keyWord) > -1) {
+		// add to rightLetter array
+			rightLetter.push(keyWord);
+		//replace underscore with the right letter
+			underScore[chosenName.indexOf(keyWord)] = keyWord;
+		// Check if word matches guesses	
+			if(underScore.join('') == chosenName) {
+				alert('You Win');//CHANGE THIS TO RESET!
+			}
+	} 
+	else {
+		// add to wrongLetter array
+			wrongLetter.push(keyWord);
+	}
+
+});
 //define images to be used
 //--load image upon page load
 //--match the image to the randomly selected word
