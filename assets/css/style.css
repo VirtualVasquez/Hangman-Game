@@ -1,15 +1,22 @@
 div .row{
-	border-color: red;
+	border-color: white;
 	border-style: solid;
 	border-width: 10px;
 }
 
 #right{
-	border-left: 10px solid red;
+	border-left: 10px solid white;
 }
 
 body{
 	line-height: 400%;
+	background-color: black;
+	color: white;
+}
+
+#myimage{
+	margin-top: 25%;
+	margin-left: 25%;
 }
 
 p{

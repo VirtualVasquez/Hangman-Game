@@ -1,5 +1,5 @@
-//Global Variable
-//===================================================
+//GLOBAL VARIABLES
+//---------------------------------------
 // Used to record how many times a letter can be pressed
 var doubleWord = ['a','b','c',
 				  'd','e','f',
@@ -10,69 +10,176 @@ var doubleWord = ['a','b','c',
 				  's','t','u',
 				  'v','w','x',
 				  'y','z'];
-// Array of Words
-const name = ['flowey', 'toriel', 'sans', 'papyrus', 'undyne']
-//choose word randomly
-var randNum = Math.floor(Math.random()*name.length);
-var chosenName = name[randNum];
-var rightLetter =[];
-var wrongLetter = [];
-var underScore = [];
+//Holds the all the names that can be generated
+var nameBank =['flowey', 'toriel', 'sans', 'papyrus', 'undyne'];
+//Holds chosenName
+var chosenName = "";
+//Holds letters in word
+var lettersInWord = [];
+//Holds number of blanks in word
+var numBlanks = 0;
+//Holds Underscores and successful guesses
+var blanksAndSuccesses =[];
+//Holds Wrong guesses
+var wrongLetters = [];
+//Counters
+var winCount = 0;
+var loseCount = 0;
+var guessesLeft = 9;
+var rightGuessCounter = 0;
+//FUNCTIONS
+//This secdtion is used to DEFINE the functions that need to be used in the game.
+//As is, these functions will not self-initiate.
+//----------------------------------------
+//the reset function will begin upon the page loading, or a new game starts, win or loss
+function reset()
+{
+	//Chooses word randomly from the nameBank
+	chosenName = nameBank[Math.floor(Math.random() * nameBank.length)];
+	//Splits the choosen word into individual letters
+	lettersInWord = chosenName.split('');
+	//number of letters of the chosenName equals the number of underscores generated
+	numBlanks = lettersInWord.length;
+	
+	//RESET
+	//these variables are what the counters and guessing space start at upon loading
+	//OR beginning a new game, due to win or loss
+	//var wincount is ommitted, as to be able to retain the number of wins between games
+	//===========================================================
+	letterGuessed = 0;
+	rightGuessCounter = 0;
+	guessesLeft = 9;
+	wrongLetters =[];
+	blanksAndSuccesses =[];
+	doubleWord = ['a','b','c',
+					  'd','e','f',
+					  'g','h','i',
+					  'j','k','l',
+					  'm','n','o',
+					  'p','q','r',
+					  's','t','u',
+					  'v','w','x',
+					  'y','z'];
+	test=false;
+	//"StartGame();" is the next function that loads upon "reset()" finishing
+	//if it weren't here, then the page would remain static.
+	startGame();
+}
+function startGame()
+{
+	//Chooses word randomly from the nameBank
+	chosenName = nameBank[Math.floor(Math.random() * nameBank.length)];
+	//Splits the chosenName into individual letters
+	lettersInWord = chosenName.split('');
+	//Get the number of blanks
+	numBlanks = lettersInWord.length;
+	
+	//RESET
+	//===========================================================
+	letterGuessed = 0;
+	rightGuessCounter = 0;
+	guessesLeft = 9;
+	wrongLetters =[];
+	blanksAndSuccesses =[];
+	doubleWord = ['a','b','c',
+					  'd','e','f',
+					  'g','h','i',
+					  'j','k','l',
+					  'm','n','o',
+					  'p','q','r',
+					  's','t','u',
+					  'v','w','x',
+					  'y','z'];
 
-//HTML manipulation
-var blanks = document.getElementById('spaces')
-
-// Main
-// ====================================================
-
-//create underscores based on length of word
-var generateUnderscore = () => {
-	for(var i = 0; i < chosenName.length; i++){
-		underScore.push('_');
+	//Populate blanks
+	for(var i = 0; i< numBlanks; i++)
+	{
+		blanksAndSuccesses.push('_');
+		document.getElementById('wordToGuess').innerHTML = blanksAndSuccesses;
 	}
-	return underScore;
+
+	//Changes HTML 
+	document.getElementById('wordToGuess').innerHTML = blanksAndSuccesses.join(' ');
+	document.getElementById('numGuesses').innerHTML = guessesLeft;
+	document.getElementById('winCounter').innerHTML = winCount;
+	document.getElementById('wrongGuesses').innerHTML = wrongLetters;
 }
 
-// Get users guess
-document.addEventListener('keypress', (event) => {
-	var keyWord = String.fromCharCode(event.keyCode);
-//if users guess is right
-	if(chosenName.indexOf(keyWord) > -1) {
-		// add to rightLetter array
-			rightLetter.push(keyWord);
-		//replace underscore with the right letter
-			underScore[chosenName.indexOf(keyWord)] = keyWord;
-		// Check if word matches guesses	
-			if(underScore.join('') == chosenName) {
-				alert('You Win');//CHANGE THIS TO RESET!
-			}
-	} 
-	else {
-		// add to wrongLetter array
-			wrongLetter.push(keyWord);
+function compareLetters(userKey)
+{
+				//Wanted to define var small = userKey.toLowerCase();
+				//however, replacing instances of "userKey" with "small"
+				//did not yield success
+
+				//If user key exist in choosen word then perform this function 
+				if(chosenName.indexOf(userKey) > -1)
+				{
+					//Loops depending on the amount of blanks 
+					for(var i = 0; i < numBlanks; i++)
+					{
+						//Fills in right index with user key
+						if(lettersInWord[i] === userKey)
+						{
+							rightGuessCounter++;
+							blanksAndSuccesses[i] = userKey;
+							document.getElementById('wordToGuess').innerHTML = blanksAndSuccesses.join(' ');
+						}	
+					}
+				}
+				//Wrong Keys
+				else
+				{
+					wrongLetters.push(userKey);
+					guessesLeft--;
+					//Changes HTML
+					document.getElementById('numGuesses').innerHTML = guessesLeft;
+					document.getElementById('wrongGuesses').innerHTML = wrongLetters;
+				}
+			
+			
+		
+}
+function winLose()
+{
+	// When number blanks if filled with right words then you win
+	if(rightGuessCounter === numBlanks)
+	{
+		//Counts Wins 
+		winCount++;
+		//Changes HTML
+		document.getElementById('winCounter').innerHTML = winCount;
+		reset();
 	}
-});
+	// When number of Guesses reaches 0 then You lose
+	else if(guessesLeft === 0)
+	{
 
-generateUnderscore().join('');
-blanks[0].innerHTML = 'Working';
+		reset();
+	}
+}
 
-//define images to be used
-//--load image upon page load
-//--match the image to the randomly selected word
-//-hange the image to match the puzzle word upon win or loss
+//MAIN PROCCESS
+//-------------------------------------------	
+//Initiates the Code; loops back up on the javascript
+//to where the function startGame was first defineed,
+//then moves down sequentially
+startGame();
 
-//-define names to be used in hangman
-//--randomly select one name from the group/array/object upon load
-//--generate number of underscores equal to word length of selected word
-//--replace underscore upon correct guess
-//--change the word upon win or loss
+document.onkeyup = function(event)
+{
+	test = true;
+	var letterGuessed = event.key; 
+	for(var i = 0; i < doubleWord.length; i++)
+	{	
+		if(letterGuessed === doubleWord[i] && test === true)
+		{
+			var spliceDword = doubleWord.splice(i,1);
+			compareLetters(letterGuessed);
+			winLose();
+		}
+	}		
+		
+}
 
-//-set number of guesses to 12 at start upon load
-//--reduce number by 1 when a wrong guess is made
-//--reset the number when game is won or lost
-
-//-record number of wins
-
-//-record number letters already guessed
-//--reset letters guessed when game is won or lost
-
+//had trouble understanding event.key, userKey.
+//could not change picture to correspond with each puzzle

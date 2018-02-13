@@ -9,8 +9,6 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
-	<script src="assets/javascript/game.js"></script> 
-
 </head>
 <body>
 
@@ -31,26 +29,24 @@
 
 				<p>WINS</p>
 				<!--# of wins displayed-->
-				<p>#</p>
+				<p id="winCounter"></p>
 
 				<p>CURRENT WORD</p>
 				<!--display (# of _) = (# of letters)-->
-				<p id="spaces"></p>
+				<p id="wordToGuess"></p>
 
 				<p>NUMBER OF GUESSES REMAINING</p>
 				<!--display # of guess remaining-->
-				<p>12</p>
+				<p id="numGuesses"></p>
 
 
 				<p>LETTERS ALREADY GUESSED</p>
 				<!--letters already guessed display-->
-				<p> A, H, F, E ,D ,G, D</p>
+				<p id="wrongGuesses"></p>
 				
 			</div>
 
-
-
-
+	<script type="text/javascript" src="assets/javascript/game.js"></script> 
 
 </body>
 
