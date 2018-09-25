@@ -2,7 +2,7 @@
 
 An Undertale-themed Hangman game, created with javascript and a little bit of _determination_. 
 
-![Start](assets/images/main.png)
+![Start](assets/images/main.png "Start Screen")
 
 ## Motivation
 
