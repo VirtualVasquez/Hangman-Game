@@ -2,51 +2,62 @@
 <html>
 <head>
 
-	<meta charset="UTF-8">
-	<title>Hangman</title>
+  <meta charset="UTF-8">
+  <title>Hangman</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
-	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
 </head>
-<body>
+<body class="container">
+  
+  <div class="row">
+    <header>
+      <img src="assets/images/undertale.png" class="col-xs-12">
+    </header>
+  </div>
 
-	<!--section1: Top Image/header-->
-	<header>
-			<div class="container">
-				<img src="assets/images/undertale.png" class="col-xs-12">
-			</div>
-	</header>
+  <div class="row" id="screenSwitch">
 
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-6" id="left">
-				<img id="myimage" src="assets/images/flowey.jpg" class="col-xs-6">
-			</div>
-			<div class="col-xs-6" id="right">
-				<p>PRESS ANY KEY TO GET STARTED</p>
+    <!-- <div id="startScreen" class="container">
+      <img src="assets/images/homescreen.jpg" class="col-xs-12">
+      <div id="startText">Press Any Key To Start</div>
+      <audio src="assets/sounds/menu.mp3" autoplay>
+      </audio>
+    </div> -->
 
-				<p>WINS</p>
-				<!--# of wins displayed-->
-				<p id="winCounter"></p>
+    <div id="gameScreen" class="container">
+    <!-- winCounter, wordToGuess, numGuesses, wrongGuesses -->
+    
+      <div class="col-xs-6" id="left">
+      </div>
 
-				<p>CURRENT WORD</p>
-				<!--display (# of _) = (# of letters)-->
-				<p id="wordToGuess"></p>
+      <div class="col-xs-6" id="right">
+        <div id="stats">
+          <p id="wordToGuess">
+          </p>
+          <p id="numGuesses">
+          </p>
+          <p id="wrongGuesses">
+          </p>
+          <p id="winCounter">
+          </p>
+          <p id="loseCounter">
+          </p>
+        </div>
+      </div>
 
-				<p>NUMBER OF GUESSES REMAINING</p>
-				<!--display # of guess remaining-->
-				<p id="numGuesses"></p>
+    </div>
 
+    <!-- <div id="loseScreen" class="container">
+    </div> -->
 
-				<p>LETTERS ALREADY GUESSED</p>
-				<!--letters already guessed display-->
-				<p id="wrongGuesses"></p>
-				
-			</div>
+    <!-- <div id="winScreen" class="container">
+    </div> -->
 
-	<script type="text/javascript" src="assets/javascript/game.js"></script> 
+  </div>
+
+  <script type="text/javascript" src="assets/javascript/game.js"></script> 
 
 </body>
 

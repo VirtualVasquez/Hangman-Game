@@ -1,25 +1,61 @@
-div .row{
-	border-color: white;
-	border-style: solid;
-	border-width: 10px;
-}
-
-#right{
-	border-left: 10px solid white;
+header{
+	display: block;
 }
 
 body{
-	line-height: 400%;
 	background-color: black;
 	color: white;
 }
 
-#myimage{
-	margin-top: 25%;
-	margin-left: 25%;
+/*start screen CSS*/
+#startScreen {
+    position: relative;
+    text-align: center;
 }
 
-p{
+#startText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 28px;
+}
+/*END*/
+
+/*game screen CSS*/
+#gameScreen {
+	border-color: white;
+	border-style: solid;
+	border-width: 3px;
+}
+
+#right, #left{
+	border-color: white;
+}
+
+#right p{
+	font-size: 24px;
 	text-align: center;
 }
 
+/*NEED MEDIA QUERIES TO FIX THIS PART*/
+#stats{
+/*	padding-top: 25%;
+	padding-bottom: 25%;*/
+	height: 50%;
+}
+/*NEED MEDIA QUERIES TO FIX THIS PART*/
+
+#left{
+	border-right-width: 3px;
+	border-right-style: solid;
+	padding-top: 50%;
+	background-image: url(../images/toriel.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    }
+
+
+
+/*END*/
