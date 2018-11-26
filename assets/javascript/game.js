@@ -4,8 +4,8 @@ var nameBank =['flowey', 'toriel', 'sans', 'papyrus', 'undyne'];
 var chosenName = "";
 var winCount = 0;
 var loseCount = 0;
-var intro = document.getElementById("startScreen");
-var puzzle = document.getElementById("gameScreen");
+let intro = document.querySelector("#startScreen");
+let puzzle = document.querySelector("#gameScreen");
 //FUNCTIONS
 //----------------------------------------
 
@@ -143,8 +143,9 @@ function winLose()
 //Initiates the Code; loops back up on the javascript
 //to where the function startGame was first defineed,
 //then moves down sequentially
-startGame();
 
+// startGame();
+intro.onclick = introToGame;
 document.onkeyup = function(event)
 {
   test = true;
@@ -163,3 +164,19 @@ document.onkeyup = function(event)
 
 //had trouble understanding event.key, userKey.
 //could not change picture to correspond with each puzzle
+
+
+
+ function introToGame(e) { 
+    intro.style.display = "none";
+    puzzle.style.display = "block";
+    document.querySelector("#firstSound").pause();
+    startGame();
+ }
+
+
+
+
+
+
+

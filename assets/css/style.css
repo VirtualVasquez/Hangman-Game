@@ -61,7 +61,7 @@ p{
 
 
 
-#loseScreen, #winScreen{
+#loseScreen, #winScreen, #startScreen{
 	padding-bottom: 50%;
     background-position: center center;
     background-repeat: no-repeat;
@@ -76,5 +76,8 @@ p{
 	background-image: url(../images/dance.gif);
 }
 
+#startScreen {
+	background-image: url(../images/homescreen.jpg);
+}
 
 /*END*/
