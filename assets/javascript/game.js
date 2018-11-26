@@ -6,6 +6,9 @@ var winCount = 0;
 var loseCount = 0;
 let intro = document.querySelector("#startScreen");
 let puzzle = document.querySelector("#gameScreen");
+let idiot = document.querySelector("#loseScreen");
+let bonetrousle = document.querySelector("#winScreen");
+
 //FUNCTIONS
 //----------------------------------------
 
@@ -27,23 +30,6 @@ function updateWrongGuesses(){
 }
 function noGuesses(){
   document.getElementById('wrongGuesses').innerHTML = ("Wrong Letters Guessed: " + "<br>" + "You Haven't Tried Yet")
-}
-
-
-function goToGame() {
-
-  document.onkeyup =function(event){
-
-    startGame();
-  }
-
-}
-
-function showFlowey(){
-
-}
-function dancingBones(){
-
 }
 
 function startGame()
@@ -126,6 +112,7 @@ function winLose()
     //Counts Wins 
     winCount++;
     //Changes HTML
+    gameWin();
     startGame();
   }
   // When number of Guesses reaches 0 then You lose
@@ -134,6 +121,7 @@ function winLose()
     //Counts Losses
     loseCount++;
     //Changes HTML
+    gameLoss();
     startGame();
   }
 }
@@ -144,23 +132,28 @@ function winLose()
 //to where the function startGame was first defineed,
 //then moves down sequentially
 
-// startGame();
 intro.onclick = introToGame;
-document.onkeyup = function(event)
-{
-  test = true;
-  var letterGuessed = event.key; 
-  for(var i = 0; i < doubleWord.length; i++)
-  { 
-    if(letterGuessed === doubleWord[i] && test === true)
-    {
-      var spliceDword = doubleWord.splice(i,1);
-      compareLetters(letterGuessed);
-      winLose();
-    }
-  }   
-    
+idiot.onclick = backToGame;
+bonetrousle.onclick = backToGame;
+
+function listening(e){ 
+  if(puzzle.style.display === "block"){
+    test = true;
+    var letterGuessed = event.key; 
+    for(var i = 0; i < doubleWord.length; i++)
+    { 
+      if(letterGuessed === doubleWord[i] && test === true)
+      {
+        var spliceDword = doubleWord.splice(i,1);
+        compareLetters(letterGuessed);
+        winLose();
+      }
+    }   
+  } 
 }
+
+document.onkeyup = listening;
+
 
 //had trouble understanding event.key, userKey.
 //could not change picture to correspond with each puzzle
@@ -170,10 +163,25 @@ document.onkeyup = function(event)
  function introToGame(e) { 
     intro.style.display = "none";
     puzzle.style.display = "block";
-    document.querySelector("#firstSound").pause();
+    // document.querySelector("#firstSound").pause();
     startGame();
  }
 
+ function backToGame(e) {
+   idiot.style.display = "none";
+   bonetrousle.style.display = "none";
+   puzzle.style.display= "block";
+ }
+
+ function gameLoss(e) {
+  puzzle.style.display = "none"; 
+  idiot.style.display = "block";
+ }
+
+ function gameWin(e){
+  puzzle.style.display = "none"; 
+  bonetrousle.style.display = "block";
+ }
 
 
 
