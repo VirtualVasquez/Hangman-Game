@@ -1,26 +1,39 @@
+/*GLOBAL CSS*/
 header{
 	display: block;
 }
-
 body{
 	background-color: black;
 	color: white;
+	text-align: center;
 }
+p{
+	font-size: 24px;
+}
+#winScreen, #loseScreen{
+	display: none;
+}
+#gameScreen{
+	display: none;	
+}
+
+
 
 /*start screen CSS*/
 #startScreen {
     position: relative;
-    text-align: center;
+    display: block;
 }
-
 #startText {
     position: absolute;
-    top: 50%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 28px;
 }
 /*END*/
+
+
 
 /*game screen CSS*/
 #gameScreen {
@@ -28,24 +41,13 @@ body{
 	border-style: solid;
 	border-width: 3px;
 }
-
 #right, #left{
 	border-color: white;
 }
-
-#right p{
-	font-size: 24px;
-	text-align: center;
-}
-
-/*NEED MEDIA QUERIES TO FIX THIS PART*/
 #stats{
-/*	padding-top: 25%;
-	padding-bottom: 25%;*/
+/*NEED MEDIA QUERIES TO FIX THIS PART*/
 	height: 50%;
 }
-/*NEED MEDIA QUERIES TO FIX THIS PART*/
-
 #left{
 	border-right-width: 3px;
 	border-right-style: solid;
@@ -54,8 +56,25 @@ body{
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
-    }
+}
+/*END*/
 
+
+
+#loseScreen, #winScreen{
+	padding-bottom: 50%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#loseScreen {
+	background-image: url(../images/lost.png);
+}
+
+#winScreen {
+	background-image: url(../images/dance.gif);
+}
 
 
 /*END*/
