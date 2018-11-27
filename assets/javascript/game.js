@@ -31,6 +31,26 @@ function updateWrongGuesses(){
 function noGuesses(){
   document.getElementById('wrongGuesses').innerHTML = ("Wrong Letters Guessed: " + "<br>" + "You Haven't Tried Yet")
 }
+function hideIntro(e) { 
+  intro.style.display = "none";
+  puzzle.style.display = "block";
+  // document.querySelector("#firstSound").pause();
+  startGame();
+}
+function backToGame(e) {
+ idiot.style.display = "none";
+ bonetrousle.style.display = "none";
+ puzzle.style.display= "block";
+}
+function showLoss(e) {
+puzzle.style.display = "none"; 
+idiot.style.display = "block";
+}
+function showWin(e){
+puzzle.style.display = "none"; 
+bonetrousle.style.display = "block";
+}
+//End DOM Manipulators
 
 function startGame()
 {
@@ -112,7 +132,7 @@ function winLose()
     //Counts Wins 
     winCount++;
     //Changes HTML
-    gameWin();
+    showWin();
     startGame();
   }
   // When number of Guesses reaches 0 then You lose
@@ -121,7 +141,7 @@ function winLose()
     //Counts Losses
     loseCount++;
     //Changes HTML
-    gameLoss();
+    showLoss();
     startGame();
   }
 }
@@ -132,11 +152,7 @@ function winLose()
 //to where the function startGame was first defineed,
 //then moves down sequentially
 
-intro.onclick = introToGame;
-idiot.onclick = backToGame;
-bonetrousle.onclick = backToGame;
-
-function listening(e){ 
+function keyListening(e){ 
   if(puzzle.style.display === "block"){
     test = true;
     var letterGuessed = event.key; 
@@ -149,10 +165,17 @@ function listening(e){
         winLose();
       }
     }   
+  } else if (puzzle.style.display !== "block"){
+    hideIntro(); 
+    backToGame();
   } 
 }
 
-document.onkeyup = listening;
+intro.onclick = hideIntro;
+idiot.onclick = backToGame;
+bonetrousle.onclick = backToGame;
+
+document.addEventListener("keyup", keyListening);
 
 
 //had trouble understanding event.key, userKey.
@@ -160,28 +183,7 @@ document.onkeyup = listening;
 
 
 
- function introToGame(e) { 
-    intro.style.display = "none";
-    puzzle.style.display = "block";
-    // document.querySelector("#firstSound").pause();
-    startGame();
- }
 
- function backToGame(e) {
-   idiot.style.display = "none";
-   bonetrousle.style.display = "none";
-   puzzle.style.display= "block";
- }
-
- function gameLoss(e) {
-  puzzle.style.display = "none"; 
-  idiot.style.display = "block";
- }
-
- function gameWin(e){
-  puzzle.style.display = "none"; 
-  bonetrousle.style.display = "block";
- }
 
 
 
