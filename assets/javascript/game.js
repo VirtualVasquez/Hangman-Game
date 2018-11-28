@@ -85,18 +85,9 @@ function characterSelect(){
 var vid = document.getElementById("myVideo");
 
 function enableMute() { 
-  // introMusic.muted = true;
-  // themeMusic.muted = true;
-  // correctLetter.muted = true;
-  // wrongLetter.muted = true;
-  // winSound.muted = true;
-  // loseSound.muted = true;
-  // muteMusic.muted = true;
-  // playMusic.muted = true;
   fx.forEach(fx => {
     fx.muted = true; 
   })
-
 } 
 
 function disableMute() { 
@@ -104,7 +95,6 @@ function disableMute() {
     fx.muted = false; 
   })
 }
-
 //End DOM Manipulators
 
 //Event Listeners

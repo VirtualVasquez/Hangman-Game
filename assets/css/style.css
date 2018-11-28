@@ -8,7 +8,7 @@ body{
 	text-align: center;
 }
 p{
-	font-size: 16px;
+	font-size: 24px;
 }
 #winScreen, #loseScreen{
 	display: none;
@@ -71,8 +71,6 @@ button{
     background-size: contain;
 }
 /*END*/
-
-
 
 #loseScreen, #winScreen, #startScreen{
     background-position: center center;
