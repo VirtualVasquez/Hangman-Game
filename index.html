@@ -20,28 +20,28 @@
   <div class="row" id="screenSwitch">
 
     <div id="startScreen" class="container">
-      <!-- <img src="assets/images/homescreen.jpg" class="col-xs-12"> -->
       <div id="startText" class="blink">Press Any Key To Start</div>
-      <audio id="firstSound" src="assets/sounds/menu.mp3" autoplay loop>
+      <audio class="fx" id="firstSound" src="assets/sounds/menu.mp3" autoplay loop>
       </audio>
     </div>
 
     <div id="gameScreen" class="container">
-        <audio id="secondSound" src="" loop>
+        <audio class="fx" id="secondSound" src="" loop>
         </audio>
+      <div class="row">
       <div class="col-xs-6" id="left">
       </div>
 
       <div class="col-xs-6" id="right">
         <div id="stats">
           <p id="wordToGuess">
-            <audio id="correct" src="assets/sounds/cletter.wav">
+            <audio class="fx" id="correct" src="assets/sounds/cletter.wav">
             </audio>
           </p>
           <p id="numGuesses">
           </p>
           <p id="wrongGuesses">
-              <audio id="incorrect" src="assets/sounds/wletter.wav">
+              <audio class ="fx" id="incorrect" src="assets/sounds/wletter.wav">
               </audio>
           </p>
           <p id="winCounter">
@@ -49,18 +49,23 @@
           <p id="loseCounter">
           </p>
         </div>
+        <div class ="row">
+          <button id="muteMusic">Mute</button>
+          <button id="playMusic">Music</button>
+        </div>
+        </div>
       </div>
-
+      </div>
     </div>
 
     <div id="loseScreen" class="container">
         <p class="blink">Press Any Key To Continue</p>
-      <audio id="loseSound" src="assets/sounds/lose.wav">
+      <audio class="fx" id="loseSound" src="assets/sounds/lose.wav">
       </audio>
     </div>
 
     <div id="winScreen" class="container">
-      <audio id="winSound" src="assets/sounds/solved.wav">
+      <audio class="fx" id="winSound" src="assets/sounds/solved.wav">
       </audio>
       <p>Correct!</p>
       <p class="blink">Press Any Key To Continue</p>

@@ -15,9 +15,11 @@ let correctLetter = document.querySelector("#correct");
 let wrongLetter = document.querySelector("#incorrect");
 let winSound = document.querySelector("#winSound");
 let loseSound = document.querySelector("#loseSound");
+let muteMusic = document.querySelector("#muteMusic");
+let playMusic = document.querySelector("#playMusic");
+let fx = document.querySelectorAll(".fx");
 //FUNCTIONS
 //----------------------------------------
-
 // DOM Manipulators
 function updateWord(){
   document.getElementById('wordToGuess').innerHTML = ("Your Word to Guess: " + "<br>" + blanksAndSuccesses.join(' '))
@@ -36,30 +38,6 @@ function updateWrongGuesses(){
 }
 function noGuesses(){
   document.getElementById('wrongGuesses').innerHTML = ("Wrong Letters Guessed: " + "<br>" + "You Haven't Tried Yet")
-}
-function hideIntro(e) { 
-  intro.style.display = "none";
-  puzzle.style.display = "block";
-  introMusic.pause();
-  startGame();
-  characterSelect();
-}
-function backToGame(e) {
- idiot.style.display = "none";
- bonetrousle.style.display = "none";
- puzzle.style.display= "block";
- winSound.pause();
- winSound.currentTime = 0;
- loseSound.pause();
- loseSound.currentTime = 0;
-}
-function showLoss(e) {
-puzzle.style.display = "none"; 
-idiot.style.display = "block";
-}
-function showWin(e){
-puzzle.style.display = "none"; 
-bonetrousle.style.display = "block";
 }
 function characterSelect(){
   if(chosenName === "alphys"){
@@ -104,9 +82,75 @@ function characterSelect(){
     themeMusic.play();
   }
 }
+var vid = document.getElementById("myVideo");
 
+function enableMute() { 
+  // introMusic.muted = true;
+  // themeMusic.muted = true;
+  // correctLetter.muted = true;
+  // wrongLetter.muted = true;
+  // winSound.muted = true;
+  // loseSound.muted = true;
+  // muteMusic.muted = true;
+  // playMusic.muted = true;
+  fx.forEach(fx => {
+    fx.muted = true; 
+  })
+
+} 
+
+function disableMute() { 
+  fx.forEach(fx => {
+    fx.muted = false; 
+  })
+}
 
 //End DOM Manipulators
+
+//Event Listeners
+function hideIntro(e) { 
+  intro.style.display = "none";
+  puzzle.style.display = "block";
+  introMusic.pause();
+  startGame();
+  characterSelect();
+}
+function backToGame(e) {
+ idiot.style.display = "none";
+ bonetrousle.style.display = "none";
+ puzzle.style.display= "block";
+ winSound.pause();
+ winSound.currentTime = 0;
+ loseSound.pause();
+ loseSound.currentTime = 0;
+}
+function showLoss(e) {
+puzzle.style.display = "none"; 
+idiot.style.display = "block";
+}
+function showWin(e){
+puzzle.style.display = "none"; 
+bonetrousle.style.display = "block";
+}
+function Listening(e){ 
+  if(puzzle.style.display === "block"){
+    test = true;
+    var letterGuessed = event.key; 
+    for(var i = 0; i < doubleWord.length; i++)
+    { 
+      if(letterGuessed === doubleWord[i] && test === true)
+      {
+        var spliceDword = doubleWord.splice(i,1);
+        compareLetters(letterGuessed);
+        winLose();
+      }
+    }   
+  } else if (puzzle.style.display !== "block"){
+    hideIntro(); 
+    backToGame();
+  } 
+}
+//END Event Listeners
 
 //Game Logic
 function startGame()
@@ -207,30 +251,12 @@ function winLose()
 
 //MAIN PROCCESS
 //------------------------------------------- 
-
-function keyListening(e){ 
-  if(puzzle.style.display === "block"){
-    test = true;
-    var letterGuessed = event.key; 
-    for(var i = 0; i < doubleWord.length; i++)
-    { 
-      if(letterGuessed === doubleWord[i] && test === true)
-      {
-        var spliceDword = doubleWord.splice(i,1);
-        compareLetters(letterGuessed);
-        winLose();
-      }
-    }   
-  } else if (puzzle.style.display !== "block"){
-    hideIntro(); 
-    backToGame();
-  } 
-}
-
 intro.onclick = hideIntro;
-idiot.onclick = backToGame;
-bonetrousle.onclick = backToGame;
-document.addEventListener("keydown", keyListening);
+idiot.onclick = Listening;
+muteMusic.onclick = enableMute;
+playMusic.onclick = disableMute;
+bonetrousle.onclick = Listening;
+document.addEventListener("keydown", Listening);
 
 //had trouble understanding event.key, userKey.
 //could not change picture to correspond with each puzzle
