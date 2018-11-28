@@ -11,7 +11,7 @@
 </head>
 <body class="container">
   
-  <div class="row">
+  <div class="row" >
     <header>
       <img src="assets/images/undertale.png" class="col-xs-12">
     </header>
@@ -21,24 +21,28 @@
 
     <div id="startScreen" class="container">
       <!-- <img src="assets/images/homescreen.jpg" class="col-xs-12"> -->
-      <div id="startText">Click on the Screen To Start</div>
-      <!-- <audio id="firstSound" src="assets/sounds/menu.mp3" autoplay loop>
-      </audio> -->
+      <div id="startText" class="blink">Press Any Key To Start</div>
+      <audio id="firstSound" src="assets/sounds/menu.mp3" autoplay loop>
+      </audio>
     </div>
 
     <div id="gameScreen" class="container">
-        <!-- <audio id="secondSound" src="assets/sounds/gameplay.mp3" autoplay loop>
-        </audio> -->
+        <audio id="secondSound" src="" loop>
+        </audio>
       <div class="col-xs-6" id="left">
       </div>
 
       <div class="col-xs-6" id="right">
         <div id="stats">
           <p id="wordToGuess">
+            <audio id="correct" src="assets/sounds/cletter.wav">
+            </audio>
           </p>
           <p id="numGuesses">
           </p>
           <p id="wrongGuesses">
+              <audio id="incorrect" src="assets/sounds/wletter.wav">
+              </audio>
           </p>
           <p id="winCounter">
           </p>
@@ -50,10 +54,16 @@
     </div>
 
     <div id="loseScreen" class="container">
+        <p class="blink">Press Any Key To Continue</p>
+      <audio id="loseSound" src="assets/sounds/lose.wav">
+      </audio>
     </div>
 
     <div id="winScreen" class="container">
+      <audio id="winSound" src="assets/sounds/solved.wav">
+      </audio>
       <p>Correct!</p>
+      <p class="blink">Press Any Key To Continue</p>
     </div>
 
   </div>

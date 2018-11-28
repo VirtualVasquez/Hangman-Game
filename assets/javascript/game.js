@@ -1,6 +1,6 @@
 //GLOBAL VARIABLES
 //---------------------------------------
-var nameBank =['flowey', 'toriel', 'sans', 'papyrus', 'undyne'];
+var nameBank =['alphys', 'asgore', 'flowey', 'mettaton', 'monsterkid', 'napstablook', 'papyrus', 'sans', 'toriel', 'undyne'];
 var chosenName = "";
 var winCount = 0;
 var loseCount = 0;
@@ -8,7 +8,13 @@ let intro = document.querySelector("#startScreen");
 let puzzle = document.querySelector("#gameScreen");
 let idiot = document.querySelector("#loseScreen");
 let bonetrousle = document.querySelector("#winScreen");
-
+let character = document.querySelector("#left");
+let introMusic = document.querySelector("#firstSound");
+let themeMusic = document.querySelector("#secondSound");
+let correctLetter = document.querySelector("#correct");
+let wrongLetter = document.querySelector("#incorrect");
+let winSound = document.querySelector("#winSound");
+let loseSound = document.querySelector("#loseSound");
 //FUNCTIONS
 //----------------------------------------
 
@@ -34,13 +40,18 @@ function noGuesses(){
 function hideIntro(e) { 
   intro.style.display = "none";
   puzzle.style.display = "block";
-  // document.querySelector("#firstSound").pause();
+  introMusic.pause();
   startGame();
+  characterSelect();
 }
 function backToGame(e) {
  idiot.style.display = "none";
  bonetrousle.style.display = "none";
  puzzle.style.display= "block";
+ winSound.pause();
+ winSound.currentTime = 0;
+ loseSound.pause();
+ loseSound.currentTime = 0;
 }
 function showLoss(e) {
 puzzle.style.display = "none"; 
@@ -50,8 +61,54 @@ function showWin(e){
 puzzle.style.display = "none"; 
 bonetrousle.style.display = "block";
 }
+function characterSelect(){
+  if(chosenName === "alphys"){
+    character.style.backgroundImage = "url('assets/images/alphys.png')";
+    themeMusic.src = 'assets/sounds/alphys.mp3';
+    themeMusic.play();
+  } else if (chosenName === "asgore"){
+    character.style.backgroundImage = "url('assets/images/asgore.png')";
+    themeMusic.src = 'assets/sounds/asgore.mp3';
+    themeMusic.play();
+  } else if (chosenName === "flowey"){
+    character.style.backgroundImage = "url('assets/images/flowey.png')";
+    themeMusic.src = 'assets/sounds/flowey.mp3';
+    themeMusic.play();
+  } else if (chosenName === "mettaton"){
+    character.style.backgroundImage = "url('assets/images/mettaton.png')";
+    themeMusic.src = 'assets/sounds/mettaton.mp3';
+    themeMusic.play();
+  } else if (chosenName === "monsterkid"){
+    character.style.backgroundImage = "url('assets/images/monsterkid.png')";
+    themeMusic.src = 'assets/sounds/monsterkid.mp3';
+    themeMusic.play();
+  } else if (chosenName === "napstablook"){
+    character.style.backgroundImage = "url('assets/images/napstablook.png')";
+    themeMusic.src = 'assets/sounds/napstablook.mp3';
+    themeMusic.play();
+  } else if (chosenName === "papyrus"){
+    character.style.backgroundImage = "url('assets/images/papyrus.png')";
+    themeMusic.src = 'assets/sounds/papyrus.mp3';
+    themeMusic.play();
+  } else if (chosenName === "sans"){
+    character.style.backgroundImage = "url('assets/images/sans.png')";
+    themeMusic.src = 'assets/sounds/sans.mp3';
+    themeMusic.play();
+  } else if (chosenName === "toriel"){
+    character.style.backgroundImage = "url('assets/images/toriel.png')";
+    themeMusic.src = 'assets/sounds/toriel.mp3';
+    themeMusic.play();
+  } else if (chosenName === "undyne"){
+    character.style.backgroundImage = "url('assets/images/undyne.png')";
+    themeMusic.src = 'assets/sounds/undyne.mp3';
+    themeMusic.play();
+  }
+}
+
+
 //End DOM Manipulators
 
+//Game Logic
 function startGame()
 {
   //Chooses word randomly from the nameBank
@@ -95,10 +152,6 @@ function startGame()
 
 function compareLetters(userKey)
 {
-        //Wanted to define var small = userKey.toLowerCase();
-        //however, replacing instances of "userKey" with "small"
-        //did not yield success
-
         //If user key exist in choosen word then perform this function 
         if(chosenName.indexOf(userKey) > -1)
         {
@@ -111,12 +164,15 @@ function compareLetters(userKey)
               rightGuessCounter++;
               blanksAndSuccesses[i] = userKey;
               updateWord();
-            } 
+              correctLetter.play();
+            }
+ 
           }
         }
         //Wrong Keys
         else
-        {
+        { 
+          wrongLetter.play();
           wrongLetters.push(userKey);
           guessesLeft--;
           //Changes HTML
@@ -132,8 +188,9 @@ function winLose()
     //Counts Wins 
     winCount++;
     //Changes HTML
+    themeMusic.pause();
     showWin();
-    startGame();
+    winSound.play();
   }
   // When number of Guesses reaches 0 then You lose
   else if(guessesLeft === 0)
@@ -141,16 +198,15 @@ function winLose()
     //Counts Losses
     loseCount++;
     //Changes HTML
+    themeMusic.pause();
     showLoss();
-    startGame();
+    loseSound.play();
   }
 }
+//End Game Logic
 
 //MAIN PROCCESS
 //------------------------------------------- 
-//Initiates the Code; loops back up on the javascript
-//to where the function startGame was first defineed,
-//then moves down sequentially
 
 function keyListening(e){ 
   if(puzzle.style.display === "block"){
@@ -174,19 +230,7 @@ function keyListening(e){
 intro.onclick = hideIntro;
 idiot.onclick = backToGame;
 bonetrousle.onclick = backToGame;
-
-document.addEventListener("keyup", keyListening);
-
+document.addEventListener("keydown", keyListening);
 
 //had trouble understanding event.key, userKey.
 //could not change picture to correspond with each puzzle
-
-
-
-
-
-
-
-
-
-

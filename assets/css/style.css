@@ -8,7 +8,7 @@ body{
 	text-align: center;
 }
 p{
-	font-size: 24px;
+	font-size: 16px;
 }
 #winScreen, #loseScreen{
 	display: none;
@@ -17,7 +17,20 @@ p{
 	display: none;	
 }
 
-
+.blink {
+	animation: blink-animation 1s steps(5, start) infinite;
+	-webkit-animation: blink-animation 1s steps(5, start) infinite;
+  }
+  @keyframes blink-animation {
+	to {
+	  visibility: hidden;
+	}
+  }
+  @-webkit-keyframes blink-animation {
+	to {
+	  visibility: hidden;
+	}
+  }
 
 /*start screen CSS*/
 #startScreen {
@@ -46,12 +59,12 @@ p{
 }
 #stats{
 /*NEED MEDIA QUERIES TO FIX THIS PART*/
-	height: 50%;
+	height: 35%;
 }
 #left{
 	border-right-width: 3px;
 	border-right-style: solid;
-	padding-top: 50%;
+	padding-top: 35%;
 	background-image: url(../images/toriel.png);
     background-position: center center;
     background-repeat: no-repeat;
@@ -62,7 +75,7 @@ p{
 
 
 #loseScreen, #winScreen, #startScreen{
-	padding-bottom: 50%;
+	padding-bottom: 35%;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
