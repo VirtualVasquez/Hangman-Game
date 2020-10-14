@@ -3,3 +3,6 @@
     background-color: black;
     color: white;
 }
+.App > *{
+    height: 100vh;
+}

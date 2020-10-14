@@ -1,0 +1,46 @@
+#game-pic{
+    /* border: white solid 5px; */
+    height: 100%;
+    margin: auto;    
+    display: block;
+}
+
+
+
+#backdrop{
+    height: 48vh;
+}
+
+#puzzle{
+    border: white solid 10px;
+    height: 33.33vh;
+}
+#stats{
+    font-size: 2em;
+    height: 5.55vh;
+}
+
+#progress{
+    background-color: red;
+    height: 2em;
+    margin-top: 1em;
+    margin-left: 1em;
+}
+
+
+#buttons{
+    height: 11.11vh;
+}
+
+.card{
+    color:orange;
+    text-align: center;
+    height: 100%;
+    background-color:black !important;
+}
+.card-body{
+    border: orange solid 5px;
+    font-size: 3.5em;
+    line-height: 100%;
+    height: 100%;
+}
