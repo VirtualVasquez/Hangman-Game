@@ -9,11 +9,6 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import Card from 'react-bootstrap/Card';
 
 
-
-
-
-
-
 const Game = props =>{
   return(
   <div>
@@ -25,7 +20,7 @@ const Game = props =>{
       </Row>
       <Row id="puzzle">
         <Col>
-        <h2>_ _ _ _ _ _ _ _ _ _ _ _ - _ </h2>
+        <p>_ _ _ _ _ _ _ _ _ _ _ _ _ _ </p>
         </Col>
       </Row>
       <Row id="stats">
@@ -49,22 +44,22 @@ const Game = props =>{
         </Col>
       </Row>
       <Row id="buttons">
-        <Col>
+        <Col lg={3}>
           <Card>
             <Card.Body>FIGHT</Card.Body>
           </Card>
         </Col>
-        <Col>
+        <Col lg={3}>
           <Card>
             <Card.Body>ACT</Card.Body>
           </Card>
         </Col>
-        <Col>
+        <Col lg={3}>
           <Card>
             <Card.Body>ITEM</Card.Body>
           </Card>
         </Col>
-        <Col>
+        <Col lg={3}>
           <Card>
             <Card.Body>MUSIC</Card.Body>
           </Card>
