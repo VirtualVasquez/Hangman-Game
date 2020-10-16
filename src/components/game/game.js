@@ -13,7 +13,34 @@ const Game = props =>{
   return(
   <div>
     <Container>
-      <Row id="backdrop">
+      <Row id="master">
+        <Col xs={6} id="backdrop">
+          <Image src={require('../../images/sans.png')} id="game-pic" fluid />
+        </Col>
+        <Col xs={6} id="puzzle">
+        </Col>
+        <Col xs={12} id="stats">
+          <Row>
+            <Col xs={4}>
+              <p id="wins">WINS LV 00</p>
+            </Col>
+            <Col xs={1}>
+              <p>HP</p>
+            </Col>
+            <Col id="prog-col" xs={2}>
+              <ProgressBar id="progress" now={50} variant="warning"/>
+            </Col>
+            <Col xs={2}>
+              <p>6 / 6</p>
+            </Col>
+          </Row>
+        </Col>
+        <Col xs={12} id="buttons">
+        </Col>      
+      </Row>
+
+
+      {/* <Row id="backdrop">
         <Col>
             <Image src={require('../../images/sans.png')} id="game-pic" fluid />
         </Col>
@@ -65,7 +92,7 @@ const Game = props =>{
           </Card>
         </Col>
       
-      </Row>
+      </Row> */}
     </Container>
   </div>
   )

@@ -20,22 +20,14 @@
     font-size: 5vw;
 }
 
-#stats{
-    font-size: 2em;
-    height: 5.55vh;
-}
-
 #progress{
     background-color: red;
-    height: 2em;
-    margin-top: 1em;
-    margin-left: 1em;
 }
 
 
-#buttons{
+/* #buttons{
     height: 11.11vh;
-}
+} */
 
 .card{
     color:orange;
@@ -48,4 +40,28 @@
     font-size: 3em;
     line-height: 100%;
     height: 100%;
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    #backdrop, #puzzle{
+        height: 24vh;
+    }
+    #stats{
+        height: 4vh;
+        background-color: cyan;
+    }    
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+/* @media only screen and (min-width: 600px) {
+
+} */
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 991px) {
+    /* .row{
+        width: 50%;
+    } */
 }
