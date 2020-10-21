@@ -7,28 +7,50 @@ import Image from 'react-bootstrap/Image';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import Card from 'react-bootstrap/Card';
 
+const nameBank =  ['alphys', 'asgore', 'flowey', 'mettaton', 'monsterkid', 'napstablook', 'papyrus', 'sans', 'toriel', 'undyne']
+
+
 class Game extends React.Component{
   constructor(props){
     super(props);
+    this.state = {
+      wins: 0,
+      chances: 6,
+      subject: '',
+      picture: '',
+      subjectArr: []
+    }
+  }
+  componentDidMount(){
+    let selected =  nameBank[Math.floor(Math.random()* nameBank.length)];
+    let arr = []
+    for (let i = 0; i < selected.length; i++){
+      arr.push("_")
+    }
+    this.setState({
+      subject:selected,
+      picture: require('./subjects/'+selected+'.png'),
+      subjectArr: arr.join(" ")
+    })
   }
   
-  render(){
+  render(){    
     return(
       <div>
-          <Container>
+          <Container >
             <Row id="master">
               <Col xs={6} md={12} id="backdrop">
-                <Image src={require('./subjects/'+ this.props.subject + '.png')} id="game-pic" fluid />
+                <Image src={this.state.picture} id="game-pic" fluid />
               </Col>
               <Col xs={6} md={12} id="puzzle">
-                <p>{this.props.subjectArr.join(" ")} </p>
+                <p>{this.state.subjectArr} </p>
               </Col>
               <Col xs={12} id="stats">
-                  <p id="wins">WINS LV {this.props.wins < 10 ? "0" + this.props.wins : this.props.wins}</p>
+                  <p id="wins">WINS LV {this.state.wins < 10 ? "0" + this.state.wins : this.state.wins}</p>
                   <div>
                     <p>HP</p>
-                    <ProgressBar id="progress" now={this.props.chances * 16.666} variant="warning"/>
-                    <p>{this.props.chances} / 6</p>
+                    <ProgressBar id="progress" now={this.state.chances * 16.666} variant="warning"/>
+                    <p>{this.state.chances} / 6</p>
                   </div>
               </Col>
               <Col xs={12} id="buttons">
