@@ -14,19 +14,24 @@ class App extends React.Component{
       subjectArr: [],
       nameBank: ['alphys', 'asgore', 'flowey', 'mettaton', 'monsterkid', 'napstablook', 'papyrus', 'sans', 'toriel', 'undyne']
     }
-    this.startGame=this.startGame.bind(this);
   }
-
-  startGame = () => {
+  componentWillMount(){
     let selected = this.state.nameBank[Math.floor(Math.random() * this.state.nameBank.length)];
+    let arr = [];
+    for (let i =0; i < selected.length; i++){
+      arr.push("_")
+    }
     this.setState({
       subject: selected,
-      subjectArr: [...selected].forEach(l => this.state.subjectArr.push("_"))
+      subjectArr: arr
     })
   }
 
 
+
   render(){
+    console.log(this.state.subject)
+    console.log(this.state.subjectArr)
     return(
       <div className="App">
         {/* <Intro /> */}
