@@ -14,7 +14,9 @@ class App extends React.Component{
       subjectArr: [],
       nameBank: ['alphys', 'asgore', 'flowey', 'mettaton', 'monsterkid', 'napstablook', 'papyrus', 'sans', 'toriel', 'undyne']
     }
+    
   }
+  
   componentWillMount(){
     let selected = this.state.nameBank[Math.floor(Math.random() * this.state.nameBank.length)];
     let arr = [];
@@ -27,11 +29,7 @@ class App extends React.Component{
     })
   }
 
-
-
   render(){
-    console.log(this.state.subject)
-    console.log(this.state.subjectArr)
     return(
       <div className="App">
         {/* <Intro /> */}
