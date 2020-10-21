@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './game.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
-import Jumbotron from 'react-bootstrap/Jumbotron';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import Card from 'react-bootstrap/Card';
 
 
 const Game = props =>{
+  let barStat = props.chances * 16.666;
+  
+  let level = (() => {
+    if(props.wins < 10){
+      return "0" + props.wins
+    } else{
+      return props.wins
+    }
+  })
+
+
+
   return(
   <div>
     <Container>
@@ -18,39 +29,17 @@ const Game = props =>{
           <Image src={require('../../images/sans.png')} id="game-pic" fluid />
         </Col>
         <Col xs={6} md={12} id="puzzle">
-          <p>_ _ _ _ _ _ _ _  _ _ _ _ </p>
+          <p>{props.subject} </p>
         </Col>
         <Col xs={12} id="stats">
-            <p id="wins">WINS LV 00</p>
+            <p id="wins">WINS LV {level()}</p>
             <div>
               <p>HP</p>
-              <ProgressBar id="progress" now={50} variant="warning"/>
-              <p>6 / 6</p>
+              <ProgressBar id="progress" now={barStat} variant="warning"/>
+              <p>{[props.chances]} / 6</p>
             </div>
         </Col>
         <Col xs={12} id="buttons">
-          {/* <Row>
-            <Col xs={3}>
-              <Card>
-                <Card.Body>FIGHT</Card.Body>
-              </Card>
-            </Col>
-            <Col xs={3}>
-              <Card>
-                <Card.Body>FIGHT</Card.Body>
-              </Card>
-            </Col>
-            <Col xs={3}>
-              <Card>
-                <Card.Body>FIGHT</Card.Body>
-              </Card>
-            </Col>
-            <Col xs={3}>
-              <Card>
-                <Card.Body>FIGHT</Card.Body>
-              </Card>
-            </Col>
-          </Row> */}
           <Card>
             <Card.Body>FIGHT</Card.Body>
           </Card>

@@ -21,16 +21,19 @@
     align-content: center;
 }
 .card{
-    color:orange;
     text-align: center;
-    background-color:black !important;
     width: 20%;
 }
 .card-body{
+    color:orange;
     border: orange solid 3px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: black;
+    width: 100%;
+    margin:0;
+
 }
 #stats, #stats  >div, #buttons{
     display: flex;
@@ -44,6 +47,9 @@
 
 @media only screen and (max-width: 414px) {
     .card{
+        font-size: 0.7em;
+    }
+    #puzzle{
         font-size: 0.7em;
     }
 }
@@ -92,5 +98,14 @@
     .card-body{
         font-size: 1.52em;
     }
+    #puzzle{
+        font-size: 3em;
+    }
 
+}
+
+@media only screen and (min-width: 1200px){
+    #puzzle{
+        font-size: 5em;
+    }
 }
