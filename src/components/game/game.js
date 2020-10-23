@@ -20,7 +20,9 @@ class Game extends React.Component{
       picture: '',
       subjectArr: []
     }
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
+  
   componentDidMount(){
     let selected =  nameBank[Math.floor(Math.random()* nameBank.length)];
     let arr = []
@@ -32,13 +34,22 @@ class Game extends React.Component{
       picture: require('./subjects/'+selected+'.png'),
       subjectArr: arr.join(" ")
     })
+    window.addEventListener('keydown', this.handleKeyPress);
+
   }
+
+  handleKeyPress = (e) =>{
+    return console.log(e.key)
+  }
+
+
   
   render(){    
+
     return(
-      <div>
-          <Container >
-            <Row id="master">
+      <div >
+          <Container>
+            <Row id="master" >
               <Col xs={6} md={12} id="backdrop">
                 <Image src={this.state.picture} id="game-pic" fluid />
               </Col>
