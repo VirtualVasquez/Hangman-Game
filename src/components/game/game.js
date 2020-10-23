@@ -18,30 +18,77 @@ class Game extends React.Component{
       chances: 6,
       subject: '',
       picture: '',
-      subjectArr: []
+      subjectArr: [],
+      wrong: []
     }
+    this.newGame = this.newGame.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.addWin = this.addWin.bind(this);
+    this.displayGuesses = this.displayGuesses.bind(this)
   }
   
   componentDidMount(){
+    this.newGame();
+
+    window.addEventListener('keydown', this.handleKeyPress);
+  }
+
+  newGame = () =>{
     let selected =  nameBank[Math.floor(Math.random()* nameBank.length)];
     let arr = []
     for (let i = 0; i < selected.length; i++){
       arr.push("_")
     }
     this.setState({
+      chances: 6,
       subject:selected,
       picture: require('./subjects/'+selected+'.png'),
       subjectArr: arr.join(" ")
     })
-    window.addEventListener('keydown', this.handleKeyPress);
-
   }
-
   handleKeyPress = (e) =>{
-    return console.log(e.key)
+    console.log(e.key);
+
+    //Figure out what key was pressesd (SOLVED)
+    //Compare key to current state.subject
+      //if (subject contains e.key && subjectArr doesn't)
+        //get all indexes of e.key in subject
+        //replace "_" at index inside of subjectArr
+        //setState to new subjectArr
+        //play sound
+      //if(e.key not found in subject & not already attempted)
+        //minus one chance
+        //push to state.wrong
+        //play sound
+
+      //if (subject == subjectArr.join(""))
+        //display win screen
+
+      //if (chances == 0)
+        //display lose screen
+
+
+
+  }
+  addWin = () =>{
+    this.setState((state) => ({
+      wins: state.wins + 1
+    }))
+  }
+  minusChance = () => {
+    if(this.state.chances > 0){
+      this.setState((state) => ({
+        chances: state.chances - 1
+      }))
+    }
   }
 
+  displayGuesses = () =>{
+    let tried = this.state.wrong;
+    return tried.join(", ")
+  }
+
+  //
 
   
   render(){    
@@ -63,6 +110,7 @@ class Game extends React.Component{
                     <ProgressBar id="progress" now={this.state.chances * 16.666} variant="warning"/>
                     <p>{this.state.chances} / 6</p>
                   </div>
+                  <p>{this.displayGuesses()}</p>
               </Col>
               <Col xs={12} id="buttons">
                 <Card>
