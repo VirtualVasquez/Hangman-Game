@@ -30,7 +30,7 @@ class Game extends React.Component{
   
   componentDidMount(){
     this.newGame();
-    window.addEventListener('keydown', this.handleKeyPress);    
+    window.addEventListener('keydown', this.handleKeyPress);
   }
 
   newGame = () =>{
@@ -59,6 +59,7 @@ class Game extends React.Component{
       let regex = new RegExp(c, "g");
       
       if(check.match(regex) && found.includes(c)===false){
+        document.getElementById("chime").play();
         this.getAllIndexes(matInd,check, c);
         for(let n = 0; n < matInd.length; n++){
           found[matInd[n]] =  c
@@ -76,7 +77,7 @@ class Game extends React.Component{
       }
     }
 
-    if(this.state.subject == this.state.right.join("")){
+    if(this.state.subject === this.state.right.join("")){
       setTimeout(this.addWin, 100);
     }
     if(this.state.chances === 0){
@@ -144,7 +145,7 @@ class Game extends React.Component{
                   <Card.Body>ITEM</Card.Body>
                 </Card>
                 <Card>
-                  <Card.Body>MUSIC</Card.Body>
+                  <Card.Body>MERCY</Card.Body>
                 </Card>
               </Col>      
             </Row>
@@ -153,17 +154,5 @@ class Game extends React.Component{
     )
   }
 }
-
-
-// const Game = props =>{
-
-
-
-
-//   return(
-  
-//   )
-// }
-
 
 export default Game;
