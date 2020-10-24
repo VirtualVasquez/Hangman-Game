@@ -59,7 +59,6 @@ class Game extends React.Component{
       let regex = new RegExp(c, "g");
       
       if(check.match(regex) && found.includes(c)===false){
-        document.getElementById("chime").play();
         this.getAllIndexes(matInd,check, c);
         for(let n = 0; n < matInd.length; n++){
           found[matInd[n]] =  c
@@ -76,7 +75,6 @@ class Game extends React.Component{
         this.minusChance();
       }
     }
-
     if(this.state.subject === this.state.right.join("")){
       setTimeout(this.addWin, 100);
     }
