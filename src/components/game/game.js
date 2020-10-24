@@ -18,62 +18,79 @@ class Game extends React.Component{
       chances: 6,
       subject: '',
       picture: '',
-      subjectArr: [],
+      right: [],
       wrong: []
     }
     this.newGame = this.newGame.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.addWin = this.addWin.bind(this);
     this.displayGuesses = this.displayGuesses.bind(this)
+    this.getAllIndexes = this.getAllIndexes.bind(this)
   }
   
   componentDidMount(){
     this.newGame();
-
-    window.addEventListener('keydown', this.handleKeyPress);
+    window.addEventListener('keydown', this.handleKeyPress);    
   }
 
   newGame = () =>{
     let selected =  nameBank[Math.floor(Math.random()* nameBank.length)];
-    let arr = []
+    let start = []
     for (let i = 0; i < selected.length; i++){
-      arr.push("_")
+      start.push("_")
     }
     this.setState({
       chances: 6,
       subject:selected,
       picture: require('./subjects/'+selected+'.png'),
-      subjectArr: arr.join(" ")
+      right: [...start],
+      wrong: []
     })
+
   }
   handleKeyPress = (e) =>{
-    console.log(e.key);
+    let check = this.state.subject;
+    let found = this.state.right;
+    let lost = this.state.wrong;
+    let matInd = [];
+    let c = String.fromCharCode(e.keyCode).toLowerCase();
 
-    //Figure out what key was pressesd (SOLVED)
-    //Compare key to current state.subject
-      //if (subject contains e.key && subjectArr doesn't)
-        //get all indexes of e.key in subject
-        //replace "_" at index inside of subjectArr
-        //setState to new subjectArr
-        //play sound
-      //if(e.key not found in subject & not already attempted)
-        //minus one chance
-        //push to state.wrong
-        //play sound
+    if(c.match(/[a-z]/g)){//don't penalize for key != letter
+      let regex = new RegExp(c, "g");
+      
+      if(check.match(regex) && found.includes(c)===false){
+        this.getAllIndexes(matInd,check, c);
+        for(let n = 0; n < matInd.length; n++){
+          found[matInd[n]] =  c
+        }
+        this.setState({
+          right: found
+        })
+      } 
+      if(!check.match(regex) && lost.includes(c)===false && lost.length < 6){
+        lost.push(c)
+        this.setState({
+          wrong: lost
+        })
+        this.minusChance();
+      }
+    }
 
-      //if (subject == subjectArr.join(""))
-        //display win screen
-
-      //if (chances == 0)
-        //display lose screen
-
-
+    if(this.state.subject == this.state.right.join("")){
+      setTimeout(this.addWin, 100);
+    }
+    if(this.state.chances === 0){
+      alert("You really are an idiot");
+      this.newGame();
+    }
 
   }
+
   addWin = () =>{
     this.setState((state) => ({
       wins: state.wins + 1
     }))
+    this.newGame();
   }
   minusChance = () => {
     if(this.state.chances > 0){
@@ -82,13 +99,17 @@ class Game extends React.Component{
       }))
     }
   }
-
   displayGuesses = () =>{
     let tried = this.state.wrong;
     return tried.join(", ")
   }
-
-  //
+  getAllIndexes = (arr, str, a) => {
+    for (let i = 0; i < str.length; i++){
+      if(str.charAt(i) === a){
+        arr.push(i)
+      }
+    }
+  }
 
   
   render(){    
@@ -101,7 +122,7 @@ class Game extends React.Component{
                 <Image src={this.state.picture} id="game-pic" fluid />
               </Col>
               <Col xs={6} md={12} id="puzzle">
-                <p>{this.state.subjectArr} </p>
+                <p>{this.state.right.join(" ")} </p>
               </Col>
               <Col xs={12} id="stats">
                   <p id="wins">WINS LV {this.state.wins < 10 ? "0" + this.state.wins : this.state.wins}</p>
