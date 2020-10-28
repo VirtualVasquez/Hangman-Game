@@ -1,0 +1,14 @@
+#result{
+    height: 100vh;
+    text-align: center;
+    display: flex;
+}
+#result > div{
+    margin: auto; 
+}
+#w-l{
+    width: 100vw;
+    margin: auto 0;
+}
+
+
