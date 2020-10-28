@@ -6,8 +6,8 @@
 #result > div{
     margin: auto; 
 }
-#w-l{
-    width: 100vw;
+#win-lose-text{
+    width: 25vw;
     margin: auto 0;
 }
 

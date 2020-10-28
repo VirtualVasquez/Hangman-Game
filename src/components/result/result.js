@@ -5,8 +5,8 @@ const Result = props => {
     return(
         <div id="result">
             <div>
-                <img src={require('./dance.gif')} alt="w-l" id="w-l"/>
-                {/* <h2 id="w-l-t">Correct!</h2> */}
+                <img src={require('../../images/dance.gif')} alt="win-lose" id="win-lose"/>
+                <h2 id="win-lose-text">Correct!</h2>
             </div>
         </div>
     )
