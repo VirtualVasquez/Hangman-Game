@@ -49,8 +49,14 @@
     .card{
         font-size: 0.7em;
     }
-    #puzzle{
+    #puzzle, #guesses{
         font-size: 0.7em;
+    }
+}
+
+@media only screen and (max-width: 600px){
+    .card{
+        width: 24.5%;
     }
 }
 

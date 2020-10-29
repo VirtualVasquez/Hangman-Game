@@ -1,14 +1,19 @@
-#result{
+.result{
     height: 100vh;
     text-align: center;
     display: flex;
-}
-#result > div{
-    margin: auto; 
-}
-#win-lose-text{
-    width: 25vw;
     margin: auto 0;
+    overflow-y: hidden;
+}
+.result > div{
+    margin: auto 0;
+    width: 100%;
+}
+#win{
+    width: 50%;
+}
+#lose{
+    width: 100%;
 }
 
 

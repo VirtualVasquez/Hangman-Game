@@ -30,7 +30,7 @@ class Game extends React.Component{
                     <ProgressBar id="progress" now={this.props.chances * 16.666} variant="warning"/>
                     <p>{this.props.chances} / 6</p>
                   </div>
-                  <p>{this.props.guesses}</p>
+                  <p id="guesses">{this.props.guesses}</p>
               </Col>
               <Col xs={12} id="buttons">
                 <Card>

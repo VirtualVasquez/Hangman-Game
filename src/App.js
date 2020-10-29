@@ -28,11 +28,9 @@ class App extends React.Component{
     this.addWin = this.addWin.bind(this);
     this.displayGuesses = this.displayGuesses.bind(this)
     this.getAllIndexes = this.getAllIndexes.bind(this)
-    this.showGame = this.showGame.bind(this);
   }
   
   componentDidMount(){
-    this.newGame();
       window.addEventListener('keydown', this.handleKeyPress);
   }
 
@@ -48,31 +46,26 @@ class App extends React.Component{
       picture: require('./components/game/subjects/'+selected+'.png'),
       right: [...start],
       wrong: [],
-      won:''
+      won:'',
+      showIntro: false,
+      showGame: true,
+      showResult: false
     })
 
   }
-
-  showGame = () =>{
-      this.setState({
-        showIntro: false,
-        showGame: true,
-        showResult: false
-      })
-      this.newGame()
-  }
-  showResult = () =>{
+  showResult = (bool) =>{
     this.setState({
       showGame: false,
-      showResult: true
+      showResult: true,
+      won: bool
     })
   }
 
   handleKeyPress = (e) =>{
     if(!this.state.showGame){
-      return this.showGame()
+      return this.newGame()
     }else{
-      let {subject, right, wrong, won} = this.state;
+      let {subject, right, wrong} = this.state;
       let matInd = [];
       let c = String.fromCharCode(e.keyCode).toLowerCase();
       if(c.match(/[a-z]/g)){//don't penalize for key != letter
@@ -95,12 +88,11 @@ class App extends React.Component{
         }
       }
       if(this.state.subject === this.state.right.join("")){
-        // setTimeout(this.addWin, 1000);
-        this.showResult()
+        this.addWin();
+        this.showResult(true)
       }
       if(this.state.chances === 0){
-        // alert("You really are an idiot");
-        this.newGame();
+        this.showResult(false)
       }
     }
 
@@ -157,29 +149,12 @@ class App extends React.Component{
     if(!showIntro && !showGame && showResult){
       return (
         <div className="App">
-        <Result />
+          <Result won={this.state.won}/>
         </div>
       )
     }
 
-    // return(      
-    //   <div className="App">
-        
-        
-        
-        {/* <Game 
-          onKeyPress={this.handleKeyPress}
-          guesses={this.displayGuesses()}
-          wins={this.state.wins}
-          chances={this.state.chances}
-          subject={this.state.subject}
-          picture={this.state.picture}
-          right={this.state.right}
-          wrong={this.state.wrong}
-        />
-        <Result /> */}
-      {/* </div>
-    ) */}
+
   }
 }
 
