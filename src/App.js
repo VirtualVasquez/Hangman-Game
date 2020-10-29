@@ -1,5 +1,5 @@
 import React from 'react';
-
+// import ReactDOM from "react-dom";
 import Intro from './components/intro/Intro.js';
 import Result from './components/result/result.js';
 import Game from './components/game/game.js';
@@ -17,18 +17,23 @@ class App extends React.Component{
       subject: '',
       picture: '',
       right: [],
-      wrong: []
+      wrong: [],
+      won: '',
+      showIntro:true,
+      showGame:false,
+      showResult:false
     }
     this.newGame = this.newGame.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.addWin = this.addWin.bind(this);
     this.displayGuesses = this.displayGuesses.bind(this)
     this.getAllIndexes = this.getAllIndexes.bind(this)
+    this.showGame = this.showGame.bind(this);
   }
   
   componentDidMount(){
     this.newGame();
-    window.addEventListener('keydown', this.handleKeyPress);
+      window.addEventListener('keydown', this.handleKeyPress);
   }
 
   newGame = () =>{
@@ -42,43 +47,61 @@ class App extends React.Component{
       subject:selected,
       picture: require('./components/game/subjects/'+selected+'.png'),
       right: [...start],
-      wrong: []
+      wrong: [],
+      won:''
     })
 
   }
-  handleKeyPress = (e) =>{
-    let check = this.state.subject;
-    let found = this.state.right;
-    let lost = this.state.wrong;
-    let matInd = [];
-    let c = String.fromCharCode(e.keyCode).toLowerCase();
 
-    if(c.match(/[a-z]/g)){//don't penalize for key != letter
-      let regex = new RegExp(c, "g");
-      
-      if(check.match(regex) && found.includes(c)===false){
-        this.getAllIndexes(matInd,check, c);
-        for(let n = 0; n < matInd.length; n++){
-          found[matInd[n]] =  c
+  showGame = () =>{
+      this.setState({
+        showIntro: false,
+        showGame: true,
+        showResult: false
+      })
+      this.newGame()
+  }
+  showResult = () =>{
+    this.setState({
+      showGame: false,
+      showResult: true
+    })
+  }
+
+  handleKeyPress = (e) =>{
+    if(!this.state.showGame){
+      return this.showGame()
+    }else{
+      let {subject, right, wrong, won} = this.state;
+      let matInd = [];
+      let c = String.fromCharCode(e.keyCode).toLowerCase();
+      if(c.match(/[a-z]/g)){//don't penalize for key != letter
+        let regex = new RegExp(c, "g");
+        if(subject.match(regex) && right.includes(c)===false){
+          this.getAllIndexes(matInd,subject, c);
+          for(let n = 0; n < matInd.length; n++){
+            right[matInd[n]] =  c
+          }
+          this.setState({
+            right: right
+          })
+        } 
+        if(!subject.match(regex) && wrong.includes(c)===false && wrong.length < 6){
+          wrong.push(c)
+          this.setState({
+            wrong: wrong
+          })
+          this.minusChance();
         }
-        this.setState({
-          right: found
-        })
-      } 
-      if(!check.match(regex) && lost.includes(c)===false && lost.length < 6){
-        lost.push(c)
-        this.setState({
-          wrong: lost
-        })
-        this.minusChance();
       }
-    }
-    if(this.state.subject === this.state.right.join("")){
-      setTimeout(this.addWin, 100);
-    }
-    if(this.state.chances === 0){
-      alert("You really are an idiot");
-      this.newGame();
+      if(this.state.subject === this.state.right.join("")){
+        // setTimeout(this.addWin, 1000);
+        this.showResult()
+      }
+      if(this.state.chances === 0){
+        // alert("You really are an idiot");
+        this.newGame();
+      }
     }
 
   }
@@ -111,10 +134,39 @@ class App extends React.Component{
 
 
   render(){
+    let {showIntro, showGame, showResult} = this.state;
+    if(showIntro && !showGame && !showResult){
+      return <div className="App"><Intro onKeyPress={this.showGame} onClick={this.showGame} /></div>
+    }
+    if(!showIntro && showGame && !showResult){
+      return (
+        <div className="App">
+          <Game 
+            onKeyPress={this.handleKeyPress}
+            guesses={this.displayGuesses()}
+            wins={this.state.wins}
+            chances={this.state.chances}
+            subject={this.state.subject}
+            picture={this.state.picture}
+            right={this.state.right}
+            wrong={this.state.wrong}
+          />
+        </div>
+      )
+    }
+    if(!showIntro && !showGame && showResult){
+      return (
+        <div className="App">
+        <Result />
+        </div>
+      )
+    }
 
-    return(
-      <div className="App">
-        {/* <Intro /> */}
+    // return(      
+    //   <div className="App">
+        
+        
+        
         {/* <Game 
           onKeyPress={this.handleKeyPress}
           guesses={this.displayGuesses()}
@@ -124,10 +176,10 @@ class App extends React.Component{
           picture={this.state.picture}
           right={this.state.right}
           wrong={this.state.wrong}
-        /> */}
-        <Result />
-      </div>
-    )
+        />
+        <Result /> */}
+      {/* </div>
+    ) */}
   }
 }
 
