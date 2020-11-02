@@ -1,5 +1,6 @@
 import React from 'react';
 // import ReactDOM from "react-dom";
+import Container from 'react-bootstrap/Container';
 import Intro from './components/intro/Intro.js';
 import Result from './components/result/result.js';
 import Game from './components/game/game.js';
@@ -167,7 +168,7 @@ class App extends React.Component{
     }
     if(!showIntro && showGame && !showResult){
       return (
-        <div className="App">
+        <Container className="App">
           <Game 
             onKeyPress={this.handleKeyPress}
             guesses={this.displayGuesses()}
@@ -179,7 +180,7 @@ class App extends React.Component{
             wrong={this.state.wrong}
           />
           <Keyboard onClick={this.handleButtonPress} />
-        </div>
+        </Container>
       )
     }
     if(!showIntro && !showGame && showResult){

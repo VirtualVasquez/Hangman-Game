@@ -1,8 +1,26 @@
 .App{
-    /* height: 100vh; */
+    height: 100vh;
     background-color: black;
     color: white;
 }
-.App > *{
-    height: 100vh;
+
+/* @media only screen and (max-width: 600px){
+} */
+
+@media only screen and (max-width: 768px) {
+    #game{
+        height: 50vh;
+    }
+    #keyboard{
+        height: 40vh;
+        justify-content: center;
+    }
+
+}
+
+@media only screen and (min-width: 768px) {
+}
+
+@media only screen and (min-width: 1200px){
+
 }

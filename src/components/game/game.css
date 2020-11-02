@@ -35,7 +35,7 @@
     margin:0;
 
 }
-#stats, #stats  >div, #buttons{
+#stats, #stats  > div, #buttons{
     display: flex;
     flex-direction: row;
 }
@@ -62,14 +62,30 @@
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 768px) {
-    #backdrop, #puzzle{
+    /* #backdrop, #puzzle{
         height: 24vh;
     }
     #stats{
         height: 4vh;
         margin-top: 1vh;
     }
-  
+    
+    #progress{
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-top: 2.5%;
+        width: 20%;
+    } */
+    #backdrop, #puzzle{
+        height: 50%;
+    }
+    #buttons{
+        height: 30%;
+    }
+    .card{
+        height: 50%;
+    }
+    
     #progress{
         margin-left: 5%;
         margin-right: 5%;

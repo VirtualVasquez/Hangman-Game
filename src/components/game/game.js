@@ -1,6 +1,5 @@
 import React from 'react';
 import './game.css';
-import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
@@ -14,9 +13,9 @@ class Game extends React.Component{
   
   render(){    
     return(
-      <div>
-          <Container>
-            <Row id="master" >
+      // <div>
+          // <Container id="master">
+            <Row id="game">
               <Col xs={6} md={12} id="backdrop">
                 <Image src={this.props.picture} id="game-pic" fluid />
               </Col>
@@ -47,8 +46,8 @@ class Game extends React.Component{
                 </Card>
               </Col>
             </Row>
-          </Container>
-        </div>
+          // </Container>
+        // </div>
     ) 
   }
 }

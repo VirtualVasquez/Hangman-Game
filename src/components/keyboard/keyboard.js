@@ -15,11 +15,11 @@ const Keyboard = props => {
         />
     )
     return(
-        <Col id="keyboard">
-            <Row>
+        // <Col >
+            <Row id="keyboard">
                 {listLetters}
             </Row>
-        </Col>
+        // </Col>
     )
 }
 
