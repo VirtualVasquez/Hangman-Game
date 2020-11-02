@@ -25,6 +25,7 @@ class App extends React.Component{
     }
     this.newGame = this.newGame.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.addWin = this.addWin.bind(this);
     this.displayGuesses = this.displayGuesses.bind(this)
     this.getAllIndexes = this.getAllIndexes.bind(this)
@@ -32,6 +33,7 @@ class App extends React.Component{
   
   componentDidMount(){
       window.addEventListener('keydown', this.handleKeyPress);
+      window.addEventListener('click', this.handleClick);
   }
 
   newGame = () =>{
@@ -97,6 +99,16 @@ class App extends React.Component{
     }
 
   }
+  handleClick = () =>{
+    if (!this.state.showGame){
+      this.setState({
+        showIntro: false,
+        showGame: true,
+        showResult: false
+      })
+      this.newGame();
+    }
+  }
 
   addWin = () =>{
     this.setState((state) => ({
@@ -128,7 +140,7 @@ class App extends React.Component{
   render(){
     let {showIntro, showGame, showResult} = this.state;
     if(showIntro && !showGame && !showResult){
-      return <div className="App"><Intro onKeyPress={this.showGame} onClick={this.showGame} /></div>
+      return <div className="App"><Intro onKeyPress={this.showGame}  onClick={this.handleClick} /></div>
     }
     if(!showIntro && showGame && !showResult){
       return (
@@ -149,7 +161,7 @@ class App extends React.Component{
     if(!showIntro && !showGame && showResult){
       return (
         <div className="App">
-          <Result won={this.state.won}/>
+          <Result won={this.state.won} onClick={this.handleClick}/>
         </div>
       )
     }

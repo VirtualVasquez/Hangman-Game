@@ -14,7 +14,7 @@ class Game extends React.Component{
   
   render(){    
     return(
-      <div >
+      <div>
           <Container>
             <Row id="master" >
               <Col xs={6} md={12} id="backdrop">
