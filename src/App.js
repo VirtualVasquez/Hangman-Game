@@ -3,6 +3,7 @@ import React from 'react';
 import Intro from './components/intro/Intro.js';
 import Result from './components/result/result.js';
 import Game from './components/game/game.js';
+import Keyboard from './components/keyboard/keyboard.js';
 import './App.css';
 
 const nameBank =  ['alphys', 'asgore', 'flowey', 'mettaton', 'monsterkid', 'napstablook', 'papyrus', 'sans', 'toriel', 'undyne']
@@ -38,8 +39,6 @@ class App extends React.Component{
   componentDidMount(){
       window.addEventListener('keydown', this.handleKeyPress);
       window.addEventListener('click', this.handleClick);
-      document.getElementsByClassName('letter', this.handleButtonPress)
-
   }
 
   newGame = () =>{
@@ -91,6 +90,13 @@ class App extends React.Component{
           this.minusChance();
         }
     }
+    if(this.state.subject === this.state.right.join("")){
+      this.addWin();
+      this.showResult(true)
+    }
+    if(this.state.chances === 0){
+      this.showResult(false)
+    }
   }
   handleKeyPress = (e) =>{
     if(!this.state.showGame){
@@ -98,17 +104,10 @@ class App extends React.Component{
     }else{
       let c = String.fromCharCode(e.keyCode).toLowerCase();
       this.checkEntry(c);
-      if(this.state.subject === this.state.right.join("")){
-        this.addWin();
-        this.showResult(true)
-      }
-      if(this.state.chances === 0){
-        this.showResult(false)
-      }
     }
   }
 
-  handleClick = () =>{
+  handleClick = (e) =>{
     if (!this.state.showGame){
       this.setState({
         showIntro: false,
@@ -117,9 +116,14 @@ class App extends React.Component{
       })
       this.newGame();
     }
+    if (this.state.showGame && this.state.showKeyboard){
+      this.handleButtonPress(e);
+    }
   }
 
   handleButtonPress = (e) =>{
+    let c = String.fromCharCode(e.target.id);
+    this.checkEntry(c)
     
   }
 
@@ -174,6 +178,7 @@ class App extends React.Component{
             right={this.state.right}
             wrong={this.state.wrong}
           />
+          <Keyboard onClick={this.handleButtonPress} />
         </div>
       )
     }

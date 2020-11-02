@@ -6,7 +6,6 @@ import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import Card from 'react-bootstrap/Card';
-import Keyboard from '../keyboard/keyboard.js';
 
 // const nameBank =  ['alphys', 'asgore', 'flowey', 'mettaton', 'monsterkid', 'napstablook', 'papyrus', 'sans', 'toriel', 'undyne']
 
@@ -47,7 +46,6 @@ class Game extends React.Component{
                   <Card.Body>MERCY</Card.Body>
                 </Card>
               </Col>
-              <Keyboard />      
             </Row>
           </Container>
         </div>
