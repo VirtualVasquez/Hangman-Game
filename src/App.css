@@ -6,6 +6,28 @@
     background-color: black;
     color: white;
 }
+#game{
+    height: 100vh;
+}
+#backdrop{
+    height: 48%;
+}
+#puzzle{
+    height: 33.33%
+}
+#stats{
+    margin-top: 1%;
+    height: 4.55%;
+}
+
+#buttons{
+    height: 11%;
+}
+#keyboard{
+    height: 35vh;
+}
+
+
 /* @media only screen and (max-width: 600px){
 } */
 

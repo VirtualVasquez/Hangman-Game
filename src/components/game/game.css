@@ -3,6 +3,9 @@
     margin: auto;    
     display: block;
 }
+/* #backdrop{
+    height: 50%;
+} */
 #puzzle{
     border: white solid 10px;
     text-align: center;
@@ -97,7 +100,7 @@
 
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
+/* @media only screen and (min-width: 768px) {
     #backdrop{
         height: 48vh;
     }
@@ -130,4 +133,4 @@
     #puzzle{
         font-size: 5em;
     }
-}
+} */

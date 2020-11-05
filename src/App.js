@@ -24,12 +24,11 @@ class App extends React.Component{
       showIntro:true,
       showGame:false,
       showResult:false,
-      showKeyboard: false,
+      showKeyboard: false
     }
     this.newGame = this.newGame.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleClick = this.handleClick.bind(this);
-    this.addWin = this.addWin.bind(this);
     this.displayGuesses = this.displayGuesses.bind(this)
     this.getAllIndexes = this.getAllIndexes.bind(this)
     this.boolKeyboard = this.boolKeyboard.bind(this)
@@ -40,6 +39,9 @@ class App extends React.Component{
   componentDidMount(){
       window.addEventListener('keydown', this.handleKeyPress);
       window.addEventListener('click', this.handleClick);
+  }
+  componentWillUnmount(){
+
   }
 
   newGame = () =>{
@@ -61,16 +63,17 @@ class App extends React.Component{
     })
 
   }
-  showResult = (bool) =>{
+  showResult = (keyboard, bool) =>{
     this.setState({
       showGame: false,
       showResult: true,
-      won: bool
+      won: bool,
+      showKeyboard: keyboard
     })
   }
 
   checkEntry = (guess) =>  {
-    let {subject, right, wrong} = this.state;
+    let {subject, right, wrong, showKeyboard} = this.state;
     let matInd = [];
     if(guess.match(/[a-z]/g)){//don't penalize for key != letter
         let regex = new RegExp(guess, "g");
@@ -88,15 +91,21 @@ class App extends React.Component{
           this.setState({
             wrong: wrong
           })
-          this.minusChance();
+          if(this.state.chances > 0){
+            this.setState((state) => ({
+              chances: state.chances - 1
+            }))
+          }
         }
     }
     if(this.state.subject === this.state.right.join("")){
-      this.addWin();
-      this.showResult(true)
+      this.setState((state) => ({
+        wins: state.wins + 1
+      }))
+      this.showResult(showKeyboard, true)
     }
     if(this.state.chances === 0){
-      this.showResult(false)
+      this.showResult(showKeyboard, false)
     }
   }
   handleKeyPress = (e) =>{
@@ -109,7 +118,6 @@ class App extends React.Component{
   }
 
   handleClick = (e) =>{
-    console.log(e.target.className);
     if (!this.state.showGame){
       this.setState({
         showIntro: false,
@@ -129,7 +137,6 @@ class App extends React.Component{
   handleButtonPress = (e) =>{
     let c = String.fromCharCode(e.target.id);
     this.checkEntry(c)
-    
   }
 
 
@@ -137,26 +144,15 @@ class App extends React.Component{
     this.setState({
       showKeyboard: !this.state.showKeyboard
     })
-
     if(this.state.showKeyboard){
-      
+      document.getElementById("game").style.height = "60vh";
+    }
+    if(!this.state.showKeyboard){
+      document.getElementById("game").style.height = "100vh";
     }
   }
 
 
-  addWin = () =>{
-    this.setState((state) => ({
-      wins: state.wins + 1
-    }))
-    this.newGame();
-  }
-  minusChance = () => {
-    if(this.state.chances > 0){
-      this.setState((state) => ({
-        chances: state.chances - 1
-      }))
-    }
-  }
   displayGuesses = () =>{
     let tried = this.state.wrong;
     return tried.join(", ")
