@@ -103,7 +103,8 @@ class App extends React.Component{
     if(!this.state.showGame){
       return this.newGame()
     }else{
-      let c = String.fromCharCode(e.keyCode).toLowerCase();
+
+     let c = String.fromCharCode(e.keyCode).toLowerCase();
       this.checkEntry(c);
     }
   }

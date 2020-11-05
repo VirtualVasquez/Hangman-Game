@@ -5,8 +5,8 @@ import Col from 'react-bootstrap/Col';
 
 const Letter = props => {
     return(
-        <Col xs={2} md={1} id={props.value} value={props.value} className="letter">
-            {String.fromCharCode(props.value)}
+        <Col style={{width: props.size}}id={props.value} value={props.value} className="letter">
+        {String.fromCharCode(props.value)}
         </Col>
     )
 }
