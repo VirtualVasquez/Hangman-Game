@@ -11,12 +11,6 @@
 }
 #puzzle{
     height: 33.33%;
-}
-#stats{
-    margin-top: 1%;
-    height: 4.55%;
-}
-#puzzle{
     border: white solid 10px;
     text-align: center;
     justify-content: center;
@@ -27,7 +21,6 @@
     background-color: red;
     margin-left: 5%;
     margin-right: 5%;
-    margin-top: 2%;
     width: 20%;
 }
 #buttons{
@@ -38,8 +31,6 @@
 }
 .card{
     text-align: center;
-    /* font-size: 2.0em; */
-    width: 20%;
 }
 .card-body{
     color:orange;
@@ -50,8 +41,22 @@
     background-color: black;
     width: 100%;
     margin:0;
+}
+.card-body:hover{
+    color: yellow;
+    border: yellow solid 3px;
 
 }
+#buttons .card:not(:first-child):hover{
+    font-size: 0px;
+}
+.annoying:hover{
+    background-image:url('./subjects/annoyingdog.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;  
+}
+
 #stats, #stats  > div, #buttons{
     display: flex;
     flex-direction: row;
@@ -59,18 +64,22 @@
 
 #wins, #stats > div{
     width: 40%;
+}
+#fight{
+    cursor: pointer;
 }  
+
 
 
 @media only screen and (max-width: 430px) {
     .card-body{
-        font-size: 0.7em;
+        font-size: 0.9em;
     }
-}
-
-@media only screen and (max-width: 600px){
-    .card{
-        width: 24.5%;
+    #puzzle > p{
+        font-size: 0.8em;
+    }
+    #progress{
+        margin-top: 3%;
     }
 }
 
@@ -79,47 +88,80 @@
     #game{
         height: 60%;
     }
-
     #backdrop{
         height: 50%;
     }
     #puzzle{
         height: 20%;
         font-size: 2em;
-
     }
     #buttons{
         height: 30%;
     }
     .card{
+        width: 24.5%;
         font-size: 1em;
         height: 50%;
     }
     
-    #progress{
-        margin-left: 5%;
-        margin-right: 5%;
-        margin-top: 2.5%;
-        width: 20%;
-    }
 }
-
-@media only screen and (min-width: 768px){
-    #progress{
-        margin-top: 1%;
+@media only screen and (min-width: 600px){
+    #stats{
+        font-size: 1.7em;
+        /* height: 1%; */
     }
-    #puzzle{
-        font-size: 5em;
+    #progress{
+        margin-top: 7%;
     }
     .card{
-        font-size: 1.5em;
+        font-size: 1.9em;
+        height: 100%;
     }
+
 }
 
+
+@media only screen and (min-width: 768px){
+    /* #progress{
+        margin-top: 1%;
+    } */
+    #puzzle{
+        font-size: 3.5em;
+    }
+    .card{
+        font-size: 2.5em;
+        width: 22%
+    }
+    #stats{
+        font-size: 2em;
+    }
+    #progress{
+        margin-top: 6%;
+    }
+
+}
+
+@media only screen and (min-width: 992px){
+    .card{
+        font-size: 3em;
+    }
+    #stats{
+        font-size: 2em;
+    }
+
+    #progress{
+        margin-top: 4%;
+    }
+
+}
 
 
 @media only screen and (min-width: 1200px){
     #puzzle{
         font-size: 6em;
     }
+    .card{
+        font-size: 4em;
+    }
+
 }

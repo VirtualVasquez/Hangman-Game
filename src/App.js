@@ -36,6 +36,7 @@ class App extends React.Component{
   componentDidMount(){
       window.addEventListener('keydown', this.handleKeyPress);
       window.addEventListener('click', this.handleClick);
+      
   }
   newGame = () =>{
     let selected =  nameBank[Math.floor(Math.random()* nameBank.length)];
@@ -131,7 +132,7 @@ class App extends React.Component{
 
   displayGuesses = () =>{
     let tried = this.state.wrong;
-    return tried.join(", ")
+    return tried.join(",")
   }
   getAllIndexes = (arr, str, a) => {
     for (let i = 0; i < str.length; i++){

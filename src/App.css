@@ -1,6 +1,12 @@
+@font-face{
+    font-family: 'DeterminationMonoWeb';
+    src: local('DeterminationMonoWeb'), url('./fonts/DeterminationMonoWeb.ttf') format('truetype')
+}
 #root{
     background-color: black;
+    font-family: DeterminationMonoWeb, serif;
 }
+
 .App{
     height: 100vh;
     background-color: black;

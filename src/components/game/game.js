@@ -15,7 +15,8 @@ class Game extends React.Component{
                 <Image src={this.props.picture} id="game-pic" fluid />
               </Col>
               <Col xs={12} md={12} id="puzzle">
-                <p>{this.props.right.join(" ")} </p>
+                <p>{this.props.right.join(" ")}</p>
+                {/* <p>N a p s t a b l o o k</p> */}
               </Col>
               <Col xs={12} id="stats">
                   <p id="wins">WINS LV {this.props.wins < 10 ? "0" + this.props.wins : this.props.wins}</p>
@@ -31,13 +32,13 @@ class Game extends React.Component{
                   <Card.Body id="fight">FIGHT</Card.Body>
                 </Card>
                 <Card>
-                  <Card.Body>ACT</Card.Body>
+                  <Card.Body className="annoying">ACT</Card.Body>
                 </Card>
                 <Card>
-                  <Card.Body>ITEM</Card.Body>
+                  <Card.Body className="annoying">ITEM</Card.Body>
                 </Card>
                 <Card>
-                  <Card.Body>MERCY</Card.Body>
+                  <Card.Body className="annoying">MERCY</Card.Body>
                 </Card>
               </Col>
             </Row>
