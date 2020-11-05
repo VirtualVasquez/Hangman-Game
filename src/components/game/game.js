@@ -33,7 +33,7 @@ class Game extends React.Component{
               </Col>
               <Col xs={12} id="buttons">
                 <Card>
-                  <Card.Body>FIGHT</Card.Body>
+                  <Card.Body id="fight">FIGHT</Card.Body>
                 </Card>
                 <Card>
                   <Card.Body>ACT</Card.Body>

@@ -24,7 +24,7 @@ class App extends React.Component{
       showIntro:true,
       showGame:false,
       showResult:false,
-      showKeyboard: true,
+      showKeyboard: false,
     }
     this.newGame = this.newGame.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
@@ -32,7 +32,7 @@ class App extends React.Component{
     this.addWin = this.addWin.bind(this);
     this.displayGuesses = this.displayGuesses.bind(this)
     this.getAllIndexes = this.getAllIndexes.bind(this)
-    this.showKeyboard = this.showKeyboard.bind(this)
+    this.boolKeyboard = this.boolKeyboard.bind(this)
     this.checkEntry = this.checkEntry.bind(this)
     this.handleButtonPress = this.handleButtonPress.bind(this)
   }
@@ -109,6 +109,7 @@ class App extends React.Component{
   }
 
   handleClick = (e) =>{
+    console.log(e.target.className);
     if (!this.state.showGame){
       this.setState({
         showIntro: false,
@@ -117,8 +118,11 @@ class App extends React.Component{
       })
       this.newGame();
     }
-    if (this.state.showGame && this.state.showKeyboard){
+    if(this.state.showKeyboard){
       this.handleButtonPress(e);
+    }
+    if(e.target.id === "fight"){
+      this.boolKeyboard();
     }
   }
 
@@ -129,8 +133,14 @@ class App extends React.Component{
   }
 
 
-  showKeyboard = () =>{
-    
+  boolKeyboard = () =>{
+    this.setState({
+      showKeyboard: !this.state.showKeyboard
+    })
+
+    if(this.state.showKeyboard){
+      
+    }
   }
 
 
@@ -162,11 +172,11 @@ class App extends React.Component{
 
 
   render(){
-    let {showIntro, showGame, showResult} = this.state;
+    let {showIntro, showGame, showResult, showKeyboard} = this.state;
     if(showIntro && !showGame && !showResult){
       return <div className="App"><Intro onKeyPress={this.showGame}  onClick={this.handleClick} /></div>
     }
-    if(!showIntro && showGame && !showResult){
+    if(!showIntro && showGame && !showResult && showKeyboard){
       return (
         <Container className="App">
           <Game 
@@ -179,7 +189,26 @@ class App extends React.Component{
             right={this.state.right}
             wrong={this.state.wrong}
           />
-          <Keyboard onClick={this.handleButtonPress} />
+          <Keyboard 
+            onClick={this.handleButtonPress} 
+            reveal={this.state.showKeyboard}
+          />
+        </Container>
+      )
+    }
+    if(!showIntro && showGame && !showResult && !showKeyboard){
+      return (
+        <Container className="App">
+          <Game 
+            onKeyPress={this.handleKeyPress}
+            guesses={this.displayGuesses()}
+            wins={this.state.wins}
+            chances={this.state.chances}
+            subject={this.state.subject}
+            picture={this.state.picture}
+            right={this.state.right}
+            wrong={this.state.wrong}
+          />
         </Container>
       )
     }

@@ -2,7 +2,6 @@ import React from 'react';
 import './keyboard.css';
 import Letter from '../letter/letter.js';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
 const Keyboard = props => {
     const codes = [97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108,
@@ -15,11 +14,9 @@ const Keyboard = props => {
         />
     )
     return(
-        // <Col >
-            <Row id="keyboard">
-                {listLetters}
-            </Row>
-        // </Col>
+        <Row id="keyboard">
+            {listLetters}
+        </Row>
     )
 }
 
