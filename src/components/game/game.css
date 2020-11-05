@@ -3,9 +3,19 @@
     margin: auto;    
     display: block;
 }
-/* #backdrop{
-    height: 50%;
-} */
+#game{
+    height: 75%;
+}
+#backdrop{
+    height: 48%;
+}
+#puzzle{
+    height: 33.33%;
+}
+#stats{
+    margin-top: 1%;
+    height: 4.55%;
+}
 #puzzle{
     border: white solid 10px;
     text-align: center;
@@ -13,9 +23,12 @@
     display: flex;
     flex-direction: column;
 }
-
 #progress{
     background-color: red;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 2%;
+    width: 20%;
 }
 #buttons{
     display: flex;
@@ -25,6 +38,7 @@
 }
 .card{
     text-align: center;
+    /* font-size: 2.0em; */
     width: 20%;
 }
 .card-body{
@@ -48,11 +62,8 @@
 }  
 
 
-@media only screen and (max-width: 414px) {
-    .card{
-        font-size: 0.7em;
-    }
-    #puzzle, #guesses{
+@media only screen and (max-width: 430px) {
+    .card-body{
         font-size: 0.7em;
     }
 }
@@ -65,27 +76,23 @@
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 768px) {
-    /* #backdrop, #puzzle{
-        height: 24vh;
+    #game{
+        height: 60%;
     }
-    #stats{
-        height: 4vh;
-        margin-top: 1vh;
-    }
-    
-    #progress{
-        margin-left: 5%;
-        margin-right: 5%;
-        margin-top: 2.5%;
-        width: 20%;
-    } */
-    #backdrop, #puzzle{
+
+    #backdrop{
         height: 50%;
+    }
+    #puzzle{
+        height: 20%;
+        font-size: 2em;
+
     }
     #buttons{
         height: 30%;
     }
     .card{
+        font-size: 1em;
         height: 50%;
     }
     
@@ -97,40 +104,22 @@
     }
 }
 
-
-
-/* Medium devices (landscape tablets, 768px and up) */
-/* @media only screen and (min-width: 768px) {
-    #backdrop{
-        height: 48vh;
-    }
-    #puzzle{
-        height: 33.33vh
-    }
-    #stats{
-        margin-top: 1%;
-        height: 4.55vh;
-    }
+@media only screen and (min-width: 768px){
     #progress{
-        margin-left: 5%;
-        margin-right: 5%;
         margin-top: 1%;
-        width: 20%;
     }
-    #buttons{
-        height: 11vh;
-    }
-    .card-body{
-        font-size: 1.52em;
-    }
-    #puzzle{
-        font-size: 3em;
-    }
-
-}
-
-@media only screen and (min-width: 1200px){
     #puzzle{
         font-size: 5em;
     }
-} */
+    .card{
+        font-size: 1.5em;
+    }
+}
+
+
+
+@media only screen and (min-width: 1200px){
+    #puzzle{
+        font-size: 6em;
+    }
+}

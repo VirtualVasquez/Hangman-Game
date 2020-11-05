@@ -6,20 +6,15 @@ import Image from 'react-bootstrap/Image';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import Card from 'react-bootstrap/Card';
 
-// const nameBank =  ['alphys', 'asgore', 'flowey', 'mettaton', 'monsterkid', 'napstablook', 'papyrus', 'sans', 'toriel', 'undyne']
-
-
 class Game extends React.Component{
-  
-  render(){    
+  render(){   
+
     return(
-      // <div>
-          // <Container id="master">
             <Row id="game">
-              <Col xs={6} md={12} id="backdrop">
+              <Col xs={12} md={12} id="backdrop">
                 <Image src={this.props.picture} id="game-pic" fluid />
               </Col>
-              <Col xs={6} md={12} id="puzzle">
+              <Col xs={12} md={12} id="puzzle">
                 <p>{this.props.right.join(" ")} </p>
               </Col>
               <Col xs={12} id="stats">
@@ -46,8 +41,6 @@ class Game extends React.Component{
                 </Card>
               </Col>
             </Row>
-          // </Container>
-        // </div>
     ) 
   }
 }

@@ -1,0 +1,13 @@
+#buttons{
+    height: 11%;
+}
+#keyboard{
+    height: 20%;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 768px) {
+    #keyboard{
+        height: 40%;
+    }
+}

@@ -13,6 +13,10 @@ const Keyboard = props => {
             value={code} 
         />
     )
+    
+    if(!props.reveal){
+        return null
+    }
     return(
         <Row id="keyboard">
             {listLetters}

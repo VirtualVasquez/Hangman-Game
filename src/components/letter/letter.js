@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 
 const Letter = props => {
     return(
-        <Col xs={{span: 2, offset: 0}} id={props.value} value={props.value} className="letter">
+        <Col xs={2} md={1} id={props.value} value={props.value} className="letter">
             {String.fromCharCode(props.value)}
         </Col>
     )
