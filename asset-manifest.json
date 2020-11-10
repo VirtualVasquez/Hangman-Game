@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/static/css/main.cdbd1f3f.chunk.css",
+    "main.js": "/static/js/main.2b0b85ce.chunk.js",
+    "main.js.map": "/static/js/main.2b0b85ce.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.752381bf.js",
+    "runtime-main.js.map": "/static/js/runtime-main.752381bf.js.map",
+    "static/css/2.11829350.chunk.css": "/static/css/2.11829350.chunk.css",
+    "static/js/2.6c0e2ca1.chunk.js": "/static/js/2.6c0e2ca1.chunk.js",
+    "static/js/2.6c0e2ca1.chunk.js.map": "/static/js/2.6c0e2ca1.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.afe6a322dd73d7fa800507fd950b79d2.js": "/precache-manifest.afe6a322dd73d7fa800507fd950b79d2.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.11829350.chunk.css.map": "/static/css/2.11829350.chunk.css.map",
+    "static/css/main.cdbd1f3f.chunk.css.map": "/static/css/main.cdbd1f3f.chunk.css.map",
+    "static/js/2.6c0e2ca1.chunk.js.LICENSE.txt": "/static/js/2.6c0e2ca1.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/static/media/DeterminationMonoWeb.7890fc69.ttf",
+    "static/media/dance.gif": "/static/media/dance.f849f7f9.gif",
+    "static/media/flowey.png": "/static/media/flowey.3b8803bc.png",
+    "static/media/intro.css": "/static/media/homescreen.322d8d3c.jpg",
+    "static/media/lost.png": "/static/media/lost.a318c669.png",
+    "static/media/napstablook.png": "/static/media/napstablook.82e7844f.png",
+    "static/media/undyne.png": "/static/media/undyne.99e32558.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.752381bf.js",
+    "static/css/2.11829350.chunk.css",
+    "static/js/2.6c0e2ca1.chunk.js",
+    "static/css/main.cdbd1f3f.chunk.css",
+    "static/js/main.2b0b85ce.chunk.js"
+  ]
+}
