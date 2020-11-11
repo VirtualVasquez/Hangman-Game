@@ -11,6 +11,7 @@
 
 #intro > div{
     font-size: 2vw;
+    text-shadow: black 4px 4px;
     position: absolute;
     height: 100%;
     width: 100%;
@@ -19,6 +20,10 @@
     align-items: center;
     justify-content: center;
     padding-bottom: 12vh;
+}
+
+#h1{
+  font-size: 2em;
 }
 #undertale{
   width: 50%;

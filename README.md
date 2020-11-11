@@ -1,22 +1,41 @@
 # Undertale Hangman
 
-An Undertale-themed Hangman game, created with javascript and a little bit of _determination_. 
+An Undertale-themed Hangman game, created using React, React Bootstrap and _determination_. 
 
-![start.png](assets/images/start.png "Start Screen")
+![Intro Image](/images/readme-intro.png)
 
-## Motivation
+## Installation
 
-This javascript game was created as a means of practicing and learning javascript. I learned the value and almost necessity of psuedocoding prior to even defining a variable when it comes to scripting the business logic of a website, or game in this instance. 
+You will need to install the React Bootstrap package. To do so, at the root of the file directory, run `npm run install` or `yarn`.
 
-## Links
+## How to Play
 
-To play the game immediately: https://virtualvasquez.github.io/Hangman-Game/
+Upon loading, you'll reach the intro screen. Press any key or click on the screen to begin the game.
+
+Once on the game screen, a character from the game Undertale will appear on the screen. Try to guess the character's name, one letter at a time. Press any letter on your keyboard to submit your guess. Correct guesses will replace the blank spaces inside the white-bordered rectangle. Incorrect guesses will populate underneath the rectangle on the far-right side, and reduce your total number of chances by 1. You start with 6 chances for each puzzle. You'll get different result screens for when you win or lose.
+
+![Game Image](/images/readme-explain.png)
+
+![Result Image](/images/readme-win.png)
+
+If you're on mobile, or if you prefer to use a touch-input or mouse, you can click on the button labeled "Fight" to have an onscreen keyboard appear. Any letter selected on the screen will function just as a key press on a physical keyboard would.
+
+![Keyboard Image](/images/readme-keyboard.png)
+
+## Road Map
+
+* I would like to add music throughtout the project
+    * Different music should play for each character that appears
+    * Right and wrong guess should trigger different sounds effects
+    * Win and lose screens should play different music.
+* The onscreen keyboard should be better scaled on mobile devices for ease of use.
 
 ## Technologies Used
 
 * HTML
 * CSS
 * Javascript
-* Bootstrap
+* React
+* React Bootstrap
 
 
