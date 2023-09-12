@@ -35,15 +35,17 @@ const Keyboard = props => {
         return null
     }
     return(
-        <Row id="keyboard">
-            <Row id="top">
-            {listOne}
-            </Row>
-            <Row id="middle">
-            {listTwo}
-            </Row>
-            <Row id="bottom">   
-            {listThree}
+        <Row id="keyboard-container">
+            <Row id="keyboard">
+                <Row id="top">
+                {listOne}
+                </Row>
+                <Row id="middle">
+                {listTwo}
+                </Row>
+                <Row id="bottom">   
+                {listThree}
+                </Row>
             </Row>
         </Row>
     )

@@ -29,16 +29,16 @@ class Game extends React.Component{
               </Col>
               <Col xs={12} id="buttons">
                 <Card>
-                  <Card.Body id="fight">FIGHT</Card.Body>
+                  <Card.Body id="fight">FIGHT<p></p></Card.Body>
                 </Card>
                 <Card>
-                  <Card.Body className="annoying">ACT</Card.Body>
+                  <Card.Body className="annoying">ACT<p></p></Card.Body>
                 </Card>
                 <Card>
-                  <Card.Body className="annoying">ITEM</Card.Body>
+                  <Card.Body className="annoying">ITEM<p></p></Card.Body>
                 </Card>
                 <Card>
-                  <Card.Body className="annoying">MERCY</Card.Body>
+                  <Card.Body className="annoying">MERCY<p></p></Card.Body>
                 </Card>
               </Col>
             </Row>

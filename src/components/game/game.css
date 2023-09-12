@@ -31,9 +31,9 @@
 }
 .card{
     text-align: center;
+    color: white !important;
 }
 .card-body{
-    color:orange;
     border: orange solid 3px;
     display: flex;
     flex-direction: column;
@@ -41,6 +41,9 @@
     background-color: black;
     width: 100%;
     margin:0;
+}
+.card-body > p{
+    display: none;
 }
 .card-body:hover{
     color: yellow;
@@ -54,7 +57,12 @@
     background-image:url('./subjects/annoyingdog.png');
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center;  
+    background-position: center;
+}
+
+.annoying:hover > p{
+    display: initial;
+    height: 0.7rem;
 }
 
 #stats, #stats  > div, #buttons{
@@ -100,7 +108,6 @@
     }
     .card{
         width: 24.5%;
-        font-size: 1em;
         height: 50%;
     }
     
@@ -108,7 +115,6 @@
 @media only screen and (min-width: 600px){
     #stats{
         font-size: 1.7em;
-        /* height: 1%; */
     }
     #progress{
         margin-top: 7%;
@@ -122,9 +128,6 @@
 
 
 @media only screen and (min-width: 768px){
-    /* #progress{
-        margin-top: 1%;
-    } */
     #puzzle{
         font-size: 3.5em;
     }
@@ -163,5 +166,7 @@
     .card{
         font-size: 4em;
     }
-
+    #buttons .card:not(:first-child):hover{
+        height: 8.5rem;
+    }
 }

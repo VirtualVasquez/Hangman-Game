@@ -1,14 +1,17 @@
 #buttons{
     height: 11%;
 }
-#keyboard{
+#keyboard-container{
     height: 20%;
+    justify-content: center;
+}
+#keyboard{
+    height: 100%;
     justify-content: center;
 }
 #keyboard > .row{
     justify-content: center;
     text-transform: uppercase;
-
 }
 #top{
     width: 100%
@@ -20,9 +23,24 @@
     width: 80%;
 }
 
+@media only screen and (max-width: 430px) {
+    #buttons{
+        height: 17%;
+    }
+    .letter.col{
+        padding: 0;
+    }
+}
+
 @media only screen and (max-width: 768px) {
-    #keyboard{
+    #keyboard-container{
         height: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #keyboard{
+        height: 75%;
     }
     #bottom{
         width: 70%;
